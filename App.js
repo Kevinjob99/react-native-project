@@ -45,6 +45,11 @@ export default class App extends Component {
             onPress={this.submitHandler}
           />
         </View>
+        <View>
+          {places.map((place, i) => (
+            <Text key={i}>{place}</Text>
+          ))}
+        </View>
       </View>
     );
   }
