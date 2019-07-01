@@ -28,14 +28,20 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput style={styles.input}
-          placeholder="Add an awesome place"
-          value={this.state.placeName}
-          onChangeText={this.changeTextHandler}
-        />
-        <Button style={styles.buttonAdd}
-          title="Add"
-        />
+        <View style={styles.inputContainer}> 
+          <TextInput 
+            style={styles.input}
+            placeholder="Add an awesome place"
+            value={this.state.placeName}
+            onChangeText={this.changeTextHandler}
+            underlineColorAndroid="#013f25"
+          />
+          <Button 
+            style={styles.buttonAdd}
+            title="Add"
+            color="#013f25"
+          />
+        </View>
       </View>
     );
   }
@@ -43,9 +49,11 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     justifyContent: "center",
-    backgroundColor: "#F5FCFF"
+    alignItems: 'center',
+    backgroundColor: "#F5FCFF",
+    padding: 10
   },
   welcome: {
     fontSize: 20,
@@ -57,16 +65,16 @@ const styles = StyleSheet.create({
     color: "#333333",
     marginBottom: 5
   },
+  inputContainer: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignItems: "center"
+  },
   input: {
-    width: "70%",
-    borderColor: "#5f5f5f",
-    borderWidth: 2,
-    padding: 10,
-    fontSize: 16
+    width: "70%"
   },
   buttonAdd: {
-    width: "30%",
-    padding: 10,
-    fontSize: 16
+    width: "30%"
   }
 });
