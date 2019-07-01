@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, TextInput, View} from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -17,10 +17,18 @@ const instructions = Platform.select({
 });
 
 export default class App extends Component {
+
+  state = {
+    placeName: ''
+  }
+
+  changeTextHandler = (val) => {
+    this.setState({ placeName: val});
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>My first react native app!</Text>
       </View>
     );
   }
