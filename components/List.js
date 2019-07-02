@@ -9,6 +9,7 @@ import ListItem from './ListItem';
     return (
       <ListItem
         place={item.title}
+        image={item.image}
         deleteListItem={() => this.props.deleteListItem(item.key)}
       />
     )
