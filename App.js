@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 
+import HeroImage from './components/HeroImage';
 import List from "./components/List";
 import NewPlaceForm from "./components/NewPlaceForm";
 import PlaceholderImage from "./assets/placeholder-image.jpg";
@@ -48,6 +49,7 @@ class App extends Component {
 
     return (
       <View style={styles.container}>
+        <HeroImage />
         <NewPlaceForm
           placeName={placeName}
           changeTextHandler={this.changeTextHandler}
