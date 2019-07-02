@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { StyleSheet, TextInput, View, Button, Text } from "react-native";
-import ListItem from "./components/ListItem";
+import { StyleSheet, TextInput, View, Button } from "react-native";
 
-export default class App extends Component {
+import List from './components/List';
+
+class App extends Component {
 
   state = {
     placeName: "",
@@ -46,11 +47,9 @@ export default class App extends Component {
             onPress={this.submitHandler}
           />
         </View>
-        <View style={styles.listContainer}>
-            <ListItem
-              places={places}
-            />
-        </View>
+        <List
+          places={places}
+        />
       </View>
     );
   }
@@ -74,8 +73,7 @@ const styles = StyleSheet.create({
   },
   buttonAdd: {
     width: "30%"
-  },
-  listContainer: {
-    width: "100%"
   }
 });
+
+export default App;
