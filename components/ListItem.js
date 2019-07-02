@@ -1,17 +1,18 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 const ListItem = (props) => {
   return (
     props.places.map((place, i) => (
-      <View 
-        key={i}
-        style={styles.listItem}
-      >
-        <Text
-          style={styles.listItemText}
-        >{place}</Text>
-      </View>
+      <TouchableOpacity key={i} onPress={() => alert('Touched ' + place + ' id: ' + i)}>
+        <View 
+          style={styles.listItem}
+        >
+          <Text
+            style={styles.listItemText}
+          >{place}</Text>
+        </View>
+      </TouchableOpacity>
     ))
   )
 }
