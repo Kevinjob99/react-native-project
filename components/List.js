@@ -6,9 +6,13 @@ import ListItem from './ListItem';
 const List = (props) => {
   return (
     <View style={styles.listContainer}>
-      <ListItem
-        places={props.places}
-      />
+      {props.places.map((place, i) => (
+        <ListItem
+          place={place}
+          deleteListItem={() => props.deleteListItem(i)}
+          key={i}
+        />
+      ))}
     </View>
     )
 }

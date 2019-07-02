@@ -27,6 +27,17 @@ class App extends Component {
     })
   }
 
+  deleteListItem = (index) => {
+
+    this.setState(prevState => {
+      return {
+        places: prevState.places.filter((place, i) => {
+          return i !== index;
+        })
+      }
+    });
+  }
+
   render() {
 
     const { places, placeName } = this.state;
@@ -40,6 +51,7 @@ class App extends Component {
         />
         <List
           places={places}
+          deleteListItem={this.deleteListItem}
         />
       </View>
     );

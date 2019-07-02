@@ -3,17 +3,16 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 const ListItem = (props) => {
   return (
-    props.places.map((place, i) => (
-      <TouchableOpacity key={i} onPress={() => alert('Touched ' + place + ' id: ' + i)}>
+      <TouchableOpacity onPress={props.deleteListItem}>
         <View 
           style={styles.listItem}
+          key={props.i}
         >
           <Text
             style={styles.listItemText}
-          >{place}</Text>
+          >{props.place}</Text>
         </View>
       </TouchableOpacity>
-    ))
   )
 }
 
