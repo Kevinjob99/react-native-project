@@ -22,7 +22,7 @@ class App extends Component {
 
     this.setState((prevState) => {
       return ({
-        places: [...prevState.places, this.state.placeName]
+        places: [...prevState.places, {key: Math.random(), title: this.state.placeName }]
       });
     })
   }

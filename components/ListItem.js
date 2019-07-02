@@ -6,7 +6,6 @@ const ListItem = (props) => {
       <TouchableOpacity onPress={props.deleteListItem}>
         <View 
           style={styles.listItem}
-          key={props.i}
         >
           <Text
             style={styles.listItemText}
