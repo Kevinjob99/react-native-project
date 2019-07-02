@@ -9,7 +9,7 @@ import ListItem from './ListItem';
     return (
       <ListItem
         place={item.title}
-        // deleteListItem={() => props.deleteListItem(i)}
+        deleteListItem={() => this.props.deleteListItem(item.key)}
       />
     )
   }
