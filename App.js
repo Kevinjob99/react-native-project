@@ -27,7 +27,7 @@ class App extends Component {
       return {
         places: [
           ...prevState.places,
-          { key: Math.random(), 
+          { key: Math.random().toString(), 
             title: this.state.placeName,
             image: PlaceholderImage
           }
