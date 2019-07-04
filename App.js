@@ -50,6 +50,17 @@ class App extends Component {
     this.setState({ selectedPlace: null });
   }
 
+  deletePlace = () => {
+    this.setState(prevState => {
+      return {
+        places: prevState.places.filter(place => {
+          return place.key !== prevState.selectedPlace.key;
+        }),
+        selectedPlace: null
+      }
+    })
+  }
+
   render() {
     const { places, placeName, selectedPlace } = this.state;
 
@@ -58,6 +69,7 @@ class App extends Component {
         <PlaceModal
           selectedPlace={selectedPlace}
           closeModal={this.closeModal}
+          deletePlace={this.deletePlace}
         />
         <HeroImage />
         <NewPlaceForm

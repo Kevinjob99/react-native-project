@@ -4,7 +4,7 @@ import { Text, View, StyleSheet, Modal, Image, Button } from "react-native";
 class PlaceModal extends Component {
   render() {
 
-    const { selectedPlace, closeModal } = this.props;
+    const { selectedPlace, closeModal, deletePlace } = this.props;
 
     return (
       <Modal animationType="slide" visible={selectedPlace !== null}>
@@ -13,7 +13,7 @@ class PlaceModal extends Component {
             <Image source={selectedPlace.image} style={styles.modalImage} />
             <Text style={styles.modalTitle}>{selectedPlace.title}</Text>
             <View style={styles.modalButtonsContainer}>
-              <Button title="Delete" color="#22421D" />
+              <Button title="Delete" color="#22421D" onPress={deletePlace} />
               <Button title="Close" color="#428038" onPress={closeModal} />
             </View>
           </View>
