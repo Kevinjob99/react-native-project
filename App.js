@@ -46,6 +46,10 @@ class App extends Component {
     })
   }
 
+  closeModal = () => {
+    this.setState({ selectedPlace: null });
+  }
+
   render() {
     const { places, placeName, selectedPlace } = this.state;
 
@@ -53,6 +57,7 @@ class App extends Component {
       <View style={styles.container}>
         <PlaceModal
           selectedPlace={selectedPlace}
+          closeModal={this.closeModal}
         />
         <HeroImage />
         <NewPlaceForm
