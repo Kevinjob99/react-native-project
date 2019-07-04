@@ -36,6 +36,10 @@ const styles = StyleSheet.create({
     fontSize: 50,
     fontWeight: 'bold',
     margin: 20
+  },
+  modalButtonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly'
   }
 });
 
