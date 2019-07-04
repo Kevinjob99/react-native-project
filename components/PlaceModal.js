@@ -1,24 +1,25 @@
-import React, { Component } from 'react'
-import { Text, View, StyleSheet, Modal, Image, Button } from 'react-native'
+import React, { Component } from "react";
+import { Text, View, StyleSheet, Modal, Image, Button } from "react-native";
 
 class PlaceModal extends Component {
-
   render() {
+
+    const { selectedPlace } = this.props;
+
     return (
-      <Modal
-        animationType="slide"
-        visible={this.props.modalVisible}
-      >
-        <View style={styles.modalContainer}>
-          <Image source={this.props.image} style={styles.modalImage} />
-          <Text>{this.props.title}</Text>
-          <View>
-            <Button title="Delete" />
-            <Button title="Close" />
+      <Modal animationType="slide" visible={selectedPlace !== null}>
+        {selectedPlace && (
+          <View style={styles.modalContainer}>
+            <Image source={selectedPlace.image} style={styles.modalImage} />
+            <Text>{selectedPlace.title}</Text>
+            <View>
+              <Button title="Delete" />
+              <Button title="Close" />
+            </View>
           </View>
-        </View>
+        )}
       </Modal>
-    )
+    );
   }
 }
 
@@ -27,9 +28,9 @@ const styles = StyleSheet.create({
     flex: 1
   },
   modalImage: {
-    width: '100%',
+    width: "100%",
     height: 200
   }
-})
+});
 
 export default PlaceModal;

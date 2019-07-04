@@ -5,11 +5,13 @@ import HeroImage from './components/HeroImage';
 import List from "./components/List";
 import NewPlaceForm from "./components/NewPlaceForm";
 import PlaceholderImage from "./assets/placeholder-image.jpg";
+import PlaceModal from "./components/PlaceModal";
 
 class App extends Component {
   state = {
     placeName: "",
-    places: []
+    places: [],
+    selectedPlace: null
   };
 
   changeTextHandler = val => {
@@ -34,30 +36,37 @@ class App extends Component {
     });
   };
 
-  deleteListItem = key => {
+  selectPlace = (key) => {
     this.setState(prevState => {
       return {
-        places: prevState.places.filter(place => {
-          return place.key !== key;
+        selectedPlace: prevState.places.find(place => {
+          return place.key === key;
         })
-      };
-    });
-  };
+      }
+    })
+  }
 
   render() {
-    const { places, placeName } = this.state;
+    const { places, placeName, selectedPlace } = this.state;
 
     return (
       <View style={styles.container}>
+        <PlaceModal
+          selectedPlace={selectedPlace}
+        />
         <HeroImage />
         <NewPlaceForm
           placeName={placeName}
           changeTextHandler={this.changeTextHandler}
           submitHandler={this.submitHandler}
         />
-        <List places={places} deleteListItem={this.deleteListItem} />
+        <List 
+          places={places}
+          selectPlace={this.selectPlace} 
+        />
       </View>
     );
+    
   }
 }
 

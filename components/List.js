@@ -5,15 +5,13 @@ import ListItem from './ListItem';
 
  class List extends Component {
 
-  renderItem = ({item}) => {
-    return (
+  renderItem = ({item}) => (
       <ListItem
         place={item.title}
         image={item.image}
-        deleteListItem={() => this.props.deleteListItem(item.key)}
+        selectPlace={() => this.props.selectPlace(item.key)}
       />
-    )
-  }
+  )
 
   render() {
 
