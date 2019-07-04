@@ -11,7 +11,7 @@ class PlaceModal extends Component {
         {selectedPlace && (
           <View style={styles.modalContainer}>
             <Image source={selectedPlace.image} style={styles.modalImage} />
-            <Text>{selectedPlace.title}</Text>
+            <Text style={styles.modalTitle}>{selectedPlace.title}</Text>
             <View>
               <Button title="Delete" />
               <Button title="Close" />
@@ -30,6 +30,12 @@ const styles = StyleSheet.create({
   modalImage: {
     width: "100%",
     height: 200
+  },
+  modalTitle: {
+    textAlign: 'center',
+    fontSize: 50,
+    fontWeight: 'bold',
+    margin: 20
   }
 });
 
