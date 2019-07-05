@@ -1,3 +1,5 @@
+import PlaceholderImage from '../../assets/placeholder-image.jpg';
+
 const initialState = {
   places: [],
   selectedPlace: null
@@ -5,7 +7,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    
+
     case 'ADD_PLACE':
       return {
         ...state,
