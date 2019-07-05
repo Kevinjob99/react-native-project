@@ -3,3 +3,8 @@ export const addPlace = (placeName) => ({
   placeName
 })
 
+export const deletePlace = () => ({
+  type: 'DELETE_PLACE'
+})
+
+
