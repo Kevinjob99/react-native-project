@@ -5,6 +5,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    
     case 'ADD_PLACE':
       return {
         ...state,
@@ -34,8 +35,15 @@ const reducer = (state = initialState, action) => {
         })
       }
 
+    case 'DESELECT_PLACE':
+      return {
+        ...state,
+        selectedPlace: null 
+      }
+
     default:
       return state;
+
   }
 }
 
