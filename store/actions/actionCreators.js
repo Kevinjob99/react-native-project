@@ -12,3 +12,7 @@ export const selectPlace = (key) => ({
   key
 })
 
+export const deselectPlace = () => ({
+  type: 'DESELECT_PLACE'
+})
+
