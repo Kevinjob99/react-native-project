@@ -7,4 +7,8 @@ export const deletePlace = () => ({
   type: 'DELETE_PLACE'
 })
 
+export const selectPlace = (key) => ({
+  type: 'SELECT_PLACE',
+  key
+})
 
