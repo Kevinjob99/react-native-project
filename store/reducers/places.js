@@ -1,6 +1,6 @@
 const initialState = {
   places: [],
-  selectedPlace = null
+  selectedPlace: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -26,6 +26,14 @@ const reducer = (state = initialState, action) => {
         selectedPlace: null
       }
       
+    case 'SELECT_PLACE':
+      return {
+        ...state,
+        selectedPlace: state.places.find(place => {
+          return place.key === action.key;
+        })
+      }
+
     default:
       return state;
   }
