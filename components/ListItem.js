@@ -1,16 +1,22 @@
-import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 
-const ListItem = props => {
-  return (
-    <TouchableOpacity onPress={props.selectPlace}>
-      <View style={styles.listItem}>
-        <Image style={styles.image} source={props.image} />
-        <Text style={styles.listItemText}>{props.place}</Text>
-      </View>
-    </TouchableOpacity>
-  );
-};
+import React, { Component } from "react";
+
+class ListItem extends Component {
+  render() {
+
+    const { name, image, selectPlace } = this.props;
+
+    return (
+      <TouchableOpacity onPress={selectPlace}>
+        <View style={styles.listItem}>
+          <Image style={styles.image} source={image} />
+          <Text style={styles.listItemText}>{name}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   listItem: {
