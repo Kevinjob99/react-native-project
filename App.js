@@ -1,68 +1,37 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
+import { connect } from "react-redux";
 
-import HeroImage from './components/HeroImage';
+import HeroImage from "./components/HeroImage";
 import List from "./components/List";
 import NewPlaceForm from "./components/NewPlaceForm";
-import PlaceholderImage from "./assets/placeholder-image.jpg";
 import PlaceModal from "./components/PlaceModal";
+import {
+  addPlace,
+  deletePlace,
+  selectPlace,
+  deselectPlace
+} from "./store/actions/actionCreators";
 
 class App extends Component {
-  state = {
-    placeName: "",
-    places: [],
-    selectedPlace: null
+  onAddedPlace = name => {
+    this.props.onAddPlace(name);
   };
 
-  changeTextHandler = val => {
-    this.setState({ placeName: val });
+  selectPlace = key => {
+    this.props.onSelectPlace(key);
   };
-
-  submitHandler = e => {
-    if (this.state.placeName.trim() === "") {
-      return;
-    }
-
-    this.setState(prevState => {
-      return {
-        places: [
-          ...prevState.places,
-          { key: Math.random().toString(), 
-            title: this.state.placeName,
-            image: PlaceholderImage
-          }
-        ]
-      };
-    });
-  };
-
-  selectPlace = (key) => {
-    this.setState(prevState => {
-      return {
-        selectedPlace: prevState.places.find(place => {
-          return place.key === key;
-        })
-      }
-    })
-  }
 
   closeModal = () => {
-    this.setState({ selectedPlace: null });
-  }
+    this.props.onDeselectPlace();
+  };
 
   deletePlace = () => {
-    this.setState(prevState => {
-      return {
-        places: prevState.places.filter(place => {
-          return place.key !== prevState.selectedPlace.key;
-        }),
-        selectedPlace: null
-      }
-    })
-  }
+    this.props.onDeletePlace();
+  };
 
   render() {
-    const { places, placeName, selectedPlace } = this.state;
+    const { places, selectedPlace } = this.props;
 
     return (
       <View style={styles.container}>
@@ -72,18 +41,10 @@ class App extends Component {
           deletePlace={this.deletePlace}
         />
         <HeroImage />
-        <NewPlaceForm
-          placeName={placeName}
-          changeTextHandler={this.changeTextHandler}
-          submitHandler={this.submitHandler}
-        />
-        <List 
-          places={places}
-          selectPlace={this.selectPlace} 
-        />
+        <NewPlaceForm onAddedPlace={this.onAddedPlace} />
+        <List places={places} selectPlace={this.selectPlace} />
       </View>
     );
-    
   }
 }
 
@@ -96,4 +57,23 @@ const styles = StyleSheet.create({
   }
 });
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    places: state.places.places,
+    selectedPlace: state.places.selectedPlace
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddPlace: name => dispatch(addPlace(name)),
+    onDeletePlace: () => dispatch(deletePlace()),
+    onSelectPlace: key => dispatch(selectPlace(key)),
+    onDeselectPlace: () => dispatch(deselectPlace())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
