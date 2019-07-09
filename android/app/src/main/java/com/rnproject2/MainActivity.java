@@ -1,4 +1,4 @@
-package com.rnproject;
+package com.rnproject2;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "RnProject";
+        return "RnProject2";
     }
 }
