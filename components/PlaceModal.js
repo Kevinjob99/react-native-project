@@ -28,17 +28,16 @@ class PlaceModal extends Component {
               </TouchableOpacity>
 
               <TouchableOpacity onPress={closeModal}>
-                <View>
+                <View style={styles.closeButton}>
                   <Icon
                     name="close"
                     size={20}
                     color="#fff"
                   />
-                  <Text>Close</Text>
+                  <Text style={styles.closeButtonText}>Close</Text>
                 </View>
               </TouchableOpacity>
               
-              {/* <Button title="Close" color="#428038"  /> */}
             </View>
           </View>
         )}
@@ -73,6 +72,18 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   deleteButtonText: {
+    color: '#fff',
+    textTransform: 'uppercase',
+    fontWeight: 'bold'
+  },
+  closeButton: {
+    backgroundColor: '#428038',
+    padding: 16,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  closeButtonText: {
     color: '#fff',
     textTransform: 'uppercase',
     fontWeight: 'bold'
