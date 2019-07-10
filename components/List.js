@@ -3,7 +3,7 @@ import { FlatList, StyleSheet } from 'react-native';
 
 import ListItem from './ListItem';
 
- class List extends Component {
+class List extends Component {
 
   renderItem = ({item}) => {
     return (

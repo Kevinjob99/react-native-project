@@ -1,10 +1,8 @@
-import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
-
 import React, { Component } from "react";
+import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 
 class ListItem extends Component {
   render() {
-
     const { name, image, selectPlace } = this.props;
 
     return (

@@ -33,7 +33,7 @@ class NewPlaceForm extends Component {
           style={styles.buttonAdd}
           title="Add"
           color="#013f25"
-          onPress={this.props.onAddedPlace}
+          onPress={this.submitHandler}
         />
       </View>
     );
