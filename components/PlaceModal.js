@@ -11,7 +11,7 @@ class PlaceModal extends Component {
         {selectedPlace && (
           <View style={styles.modalContainer}>
             <Image source={selectedPlace.image} style={styles.modalImage} />
-            <Text style={styles.modalTitle}>{selectedPlace.title}</Text>
+            <Text style={styles.modalTitle}>{selectedPlace.name}</Text>
             <View style={styles.modalButtonsContainer}>
               <Button title="Delete" color="#22421D" onPress={deletePlace} />
               <Button title="Close" color="#428038" onPress={closeModal} />
