@@ -15,7 +15,7 @@ class PlaceModal extends Component {
             <Image source={selectedPlace.image} style={styles.modalImage} />
             <Text style={styles.modalTitle}>{selectedPlace.name}</Text>
             <View style={styles.modalButtonsContainer}>
-              <TouchableOpacity onPress={deletePlace} >
+              <TouchableOpacity onPress={deletePlace}>
                 <View style={styles.deleteButton}>
                   <Icon
                     name="delete"
@@ -26,8 +26,19 @@ class PlaceModal extends Component {
                 </View>
                 
               </TouchableOpacity>
+
+              <TouchableOpacity onPress={closeModal}>
+                <View>
+                  <Icon
+                    name="close"
+                    size={20}
+                    color="#fff"
+                  />
+                  <Text>Close</Text>
+                </View>
+              </TouchableOpacity>
               
-              <Button title="Close" color="#428038" onPress={closeModal} />
+              {/* <Button title="Close" color="#428038"  /> */}
             </View>
           </View>
         )}
