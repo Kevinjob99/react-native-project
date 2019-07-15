@@ -5,7 +5,7 @@ Navigation.registerComponent('my-awesome-places.AuthScreen', () => AuthScreen);
 
 Navigation.startSingleScreenApp({
   screen: {
-    screen: 'my-awesome=places.AuthScreen',
+    screen: 'my-awesome-places.AuthScreen',
     title: 'Login'
   }
 });
