@@ -1,12 +1,25 @@
-import { Navigation } from 'react-native-navigation';
-import AuthScreen from './screens/Auth';
+import { Navigation } from "react-native-navigation";
+import AuthScreen from "./screens/Auth";
+import SharePlaceScreen from "./screens/SharePlace";
+import FindPlaceScreen from "./screens/FindPlace";
 
-Navigation.registerComponent('my-awesome-places.AuthScreen', () => AuthScreen);
+Navigation.registerComponent(
+  "my-awesome-places.AuthScreen", 
+  () => AuthScreen
+);
+Navigation.registerComponent(
+  "my-awesome-places.SharePlaceScreen",
+  () => SharePlaceScreen
+);
+Navigation.registerComponent(
+  "my-awesome-places.FindPlaceScreen",
+  () => FindPlaceScreen
+);
 
 Navigation.startSingleScreenApp({
   screen: {
-    screen: 'my-awesome-places.AuthScreen',
-    title: 'Login'
+    screen: "my-awesome-places.AuthScreen",
+    title: "Login"
   }
 });
 
