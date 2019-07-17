@@ -1,16 +1,31 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import { connect } from 'react-redux';
 
 import NewPlaceForm from '../components/NewPlaceForm';
+import { addPlace } from '../store/actions/actionCreators';
 
 class SharePlaceScreen extends Component {
+
+  onAddedPlace = name => {
+    this.props.onAddPlace(name);
+  };
+
   render() {
     return (
       <View>
-        <NewPlaceForm/>
+        <NewPlaceForm
+          onAddedPlace={this.onAddedPlace}
+        />
       </View>
     )
   }
 }
 
-export default SharePlaceScreen;
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddPlace: name => dispatch(addPlace(name))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(SharePlaceScreen);
