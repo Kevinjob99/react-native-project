@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 
+import List from '../components/List';
+
 class FindPlaceScreen extends Component {
   render() {
     return (
       <View>
-        <Text>FindPlaceScreen</Text>
+        <List
+          places={this.props.places}
+        />
       </View>
     )
   }
