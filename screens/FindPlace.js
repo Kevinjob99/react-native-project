@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import { connect } from 'react-redux';
 
 import List from '../components/List';
 
@@ -15,4 +16,10 @@ class FindPlaceScreen extends Component {
   }
 }
 
-export default FindPlaceScreen;
+const mapStateToProps = state => {
+  return {
+    places: state.places.places
+  }
+}
+
+export default connect(mapStateToProps)(FindPlaceScreen);
