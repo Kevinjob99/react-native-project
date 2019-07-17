@@ -1,16 +1,15 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, Modal, Image, Button, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-class PlaceModal extends Component {
+class PlaceDetailsScreen extends Component {
   render() {
 
-    const { selectedPlace, closeModal, deletePlace } = this.props;
+    const { selectedPlace, deletePlace } = this.props;
 
     return (
-      <Modal animationType="slide" visible={selectedPlace !== null}>
-        {selectedPlace && (
+      
           <View style={styles.modalContainer}>
             <Image source={selectedPlace.image} style={styles.modalImage} />
             <Text style={styles.modalTitle}>{selectedPlace.name}</Text>
@@ -26,22 +25,8 @@ class PlaceModal extends Component {
                 </View>
                 
               </TouchableOpacity>
-
-              <TouchableOpacity onPress={closeModal}>
-                <View style={styles.closeButton}>
-                  <Icon
-                    name="close"
-                    size={20}
-                    color="#fff"
-                  />
-                  <Text style={styles.closeButtonText}>Close</Text>
-                </View>
-              </TouchableOpacity>
-              
             </View>
           </View>
-        )}
-      </Modal>
     );
   }
 }
@@ -90,4 +75,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default PlaceModal;
+export default PlaceDetailsScreen;
