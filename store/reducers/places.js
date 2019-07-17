@@ -1,9 +1,13 @@
 import PlaceholderImage from "../../assets/placeholder-image.jpg";
+// import {
+//   ADD_PLACE,
+//   DELETE_PLACE,
+//   SELECT_PLACE,
+//   DESELECT_PLACE
+// } from "../actions/actionsTypes";
 import {
   ADD_PLACE,
-  DELETE_PLACE,
-  SELECT_PLACE,
-  DESELECT_PLACE
+  DELETE_PLACE
 } from "../actions/actionsTypes";
 
 const initialState = {
@@ -32,19 +36,19 @@ const reducer = (state = initialState, action) => {
         selectedPlace: null
       };
 
-    case SELECT_PLACE:
-      return {
-        ...state,
-        selectedPlace: state.places.find(place => {
-          return place.key === action.key;
-        })
-      };
+    // case SELECT_PLACE:
+    //   return {
+    //     ...state,
+    //     selectedPlace: state.places.find(place => {
+    //       return place.key === action.key;
+    //     })
+    //   };
 
-    case DESELECT_PLACE:
-      return {
-        ...state,
-        selectedPlace: null
-      };
+    // case DESELECT_PLACE:
+    //   return {
+    //     ...state,
+    //     selectedPlace: null
+    //   };
 
     default:
       return state;
