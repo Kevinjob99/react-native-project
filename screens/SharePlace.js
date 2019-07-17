@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import NewPlaceForm from '../components/NewPlaceForm';
 import { addPlace } from '../store/actions/actionCreators';
 
+import HeroImage from '../components/HeroImage';
+
 class SharePlaceScreen extends Component {
 
   onAddedPlace = name => {
@@ -14,6 +16,7 @@ class SharePlaceScreen extends Component {
   render() {
     return (
       <View>
+        <HeroImage />
         <NewPlaceForm
           onAddedPlace={this.onAddedPlace}
         />
