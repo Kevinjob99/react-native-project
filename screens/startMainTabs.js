@@ -7,7 +7,7 @@ const startTabs = () => {
     Icon.getImageSource('share', 30),
     Icon.getImageSource('search', 30),
     Icon.getImageSource('menu', 30)
-  ]).then(sources => {
+  ]).then(sources => {    
     Navigation.startTabBasedApp({
       tabs: [
         {
@@ -16,10 +16,11 @@ const startTabs = () => {
           title: 'Share Place',
           icon: sources[0],
           navigatorButtons: {
-            leftButtons: {
+            leftButtons: [{
               icon: sources[2],
-              title: 'Menu'
-            }
+              title: 'Menu',
+              id: 'sideDrawerToggle'
+            }]
           }
         },
         {
@@ -28,10 +29,11 @@ const startTabs = () => {
           title: 'Find Place',
           icon: sources[1],
           navigatorButtons: {
-            leftButtons: {
+            leftButtons: [{
               icon: sources[2],
-              title: 'Menu'
-            }
+              title: 'Menu',
+              id: 'sideDrawerToggle'
+            }]
           }
         }
       ],
