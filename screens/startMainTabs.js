@@ -5,7 +5,8 @@ const startTabs = () => {
 
   Promise.all([
     Icon.getImageSource('share', 30),
-    Icon.getImageSource('search', 30)
+    Icon.getImageSource('search', 30),
+    Icon.getImageSource('menu', 30)
   ]).then(sources => {
     Navigation.startTabBasedApp({
       tabs: [
@@ -13,15 +14,32 @@ const startTabs = () => {
           screen: 'my-awesome-places.SharePlaceScreen',
           label: 'Share Place',
           title: 'Share Place',
-          icon: sources[0]
+          icon: sources[0],
+          navigatorButtons: {
+            leftButtons: {
+              icon: sources[2],
+              title: 'Menu'
+            }
+          }
         },
         {
           screen: 'my-awesome-places.FindPlaceScreen',
           label: 'Find Place',
           title: 'Find Place',
-          icon: sources[1]
+          icon: sources[1],
+          navigatorButtons: {
+            leftButtons: {
+              icon: sources[2],
+              title: 'Menu'
+            }
+          }
         }
-      ]
+      ],
+      drawer: {
+        left: {
+          screen: 'my-awesome-places.SideDrawerScreen'
+        }
+      }
     });
   })
   
