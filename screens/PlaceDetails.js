@@ -1,12 +1,22 @@
 import React, { Component } from "react";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { connect } from 'react-redux';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { deletePlace } from '../store/actions/actionCreators';
 
 class PlaceDetailsScreen extends Component {
+
+  deletePlaceHandler = () => {
+    this.props.onDeletePlace(this.props.selectedPlace.key);
+    this.props.navigator.pop({
+      animated: true,
+      animatioType: 'slide-horizontal'
+    });
+  }
   render() {
 
-    const { selectedPlace, deletePlace } = this.props;
+    const { selectedPlace } = this.props;
 
     return (
       
@@ -14,7 +24,7 @@ class PlaceDetailsScreen extends Component {
             <Image source={selectedPlace.image} style={styles.modalImage} />
             <Text style={styles.modalTitle}>{selectedPlace.name}</Text>
             <View style={styles.modalButtonsContainer}>
-              <TouchableOpacity onPress={deletePlace}>
+              <TouchableOpacity onPress={this.deletePlaceHandler}>
                 <View style={styles.deleteButton}>
                   <Icon
                     name="delete"
@@ -75,4 +85,10 @@ const styles = StyleSheet.create({
   }
 });
 
-export default PlaceDetailsScreen;
+const mapDispatchToProps = dispatch => {
+  return {
+    onDeletePlace: key => dispatch(deletePlace(key))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(PlaceDetailsScreen);
