@@ -13,7 +13,7 @@ class AuthScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <HeadingOne>Please signup</HeadingOne>
+        <HeadingOne style={styles.headingText}>Please signup</HeadingOne>
         <Button title="Switch to Login" />
         <View style={styles.inputContainer}>
           <DefaultInput placeholder="Your e-mail" style={styles.input} />
@@ -32,6 +32,9 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: "center",
     alignItems: "center"
+  },
+  headingText: {
+    marginBottom: 16
   },
   inputContainer: {
     width: '80%'
