@@ -3,9 +3,10 @@ import { TextInput, StyleSheet } from 'react-native';
 
 const DefaultInput = props => (
   <TextInput
-    style={styles.input}
     underlineColorAndroid="#013f25"
     {...props}
+    style={[styles.input, props.style]}
+
   />
 )
 

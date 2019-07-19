@@ -15,9 +15,9 @@ class AuthScreen extends Component {
         <Text>Please signup</Text>
         <Button title="Switch to Login" />
         <View style={styles.inputContainer}>
-          <DefaultInput placeholder="Your e-mail" />
-          <DefaultInput placeholder="Your password" />
-          <DefaultInput placeholder="Confirm password" />
+          <DefaultInput placeholder="Your e-mail" style={styles.input} />
+          <DefaultInput placeholder="Your password" style={styles.input} />
+          <DefaultInput placeholder="Confirm password" style={styles.input} />
         </View>
         <Button title="Login" onPress={this.loginHandler} />
       </View>
@@ -34,6 +34,9 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: '80%'
+  },
+  input: {
+    padding: 10
   }
 });
 
