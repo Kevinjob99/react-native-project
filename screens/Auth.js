@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, TextInput } from 'react-native';
 
 import startTabs from './startMainTabs';
 
@@ -12,7 +12,11 @@ class AuthScreen extends Component {
   render() {
     return (
       <View>
-        <Text>Auth screen!</Text>
+        <Text>Please signup</Text>
+        <Button title="Switch to Login"/>
+        <TextInput placeholder="Your e-mail"/>
+        <TextInput placeholder="Your password" />
+        <TextInput placeholder="Confirm password" />
         <Button
           title="Login"
           onPress={this.loginHandler}
