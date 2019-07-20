@@ -5,6 +5,7 @@ import startTabs from "./startMainTabs";
 import DefaultInput from "../components/UI/DefaultInput";
 import HeadingOne from "../components/UI/HeadingOne";
 import backgroundImage from "../assets/hills.jpg";
+import PrimaryButton from '../components/UI/PrimaryButton';
 
 class AuthScreen extends Component {
   loginHandler = () => {
@@ -37,8 +38,8 @@ class AuthScreen extends Component {
             />
           </View>
           <View style={styles.buttonsContainer}>
-            <Button title="Switch to Login" />
-            <Button title="Login" onPress={this.loginHandler} />
+            <PrimaryButton>Switch to Login</PrimaryButton>
+            <PrimaryButton onPress={this.loginHandler}>Submit</PrimaryButton>
           </View>
         </View>
       </ImageBackground>
