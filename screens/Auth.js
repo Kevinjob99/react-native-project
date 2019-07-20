@@ -16,7 +16,6 @@ class AuthScreen extends Component {
       <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
         <View style={styles.container}>
           <HeadingOne style={styles.headingText}>Please signup</HeadingOne>
-          <Button title="Switch to Login" />
           <View style={styles.inputContainer}>
             <DefaultInput
               placeholder="Your e-mail"
@@ -37,7 +36,10 @@ class AuthScreen extends Component {
               underlineColorAndroid="#fff"
             />
           </View>
-          <Button title="Login" onPress={this.loginHandler} />
+          <View style={styles.buttonsContainer}>
+            <Button title="Switch to Login" />
+            <Button title="Login" onPress={this.loginHandler} />
+          </View>
         </View>
       </ImageBackground>
     );
@@ -58,12 +60,18 @@ const styles = StyleSheet.create({
   headingText: {
     marginBottom: 16
   },
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '80%',
+    padding: 20
+  },
   inputContainer: {
     width: "80%"
   },
   input: {
     padding: 10,
-    color: '#fff'
+    color: "#fff"
   }
 });
 
