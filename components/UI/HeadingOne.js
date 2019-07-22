@@ -13,7 +13,10 @@ const HeadingOne = props => (
 const styles = StyleSheet.create({
   headingOneText: {
     fontSize: 28,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#000',
+    margin: 16
   }
 })
 
