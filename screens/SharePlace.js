@@ -12,6 +12,7 @@ import { connect } from "react-redux";
 import { addPlace } from "../store/actions/actionCreators";
 import HeroImage from "../components/HeroImage";
 import HeadingOne from '../components/UI/HeadingOne';
+import AddImage from "../components/AddImage";
 
 class SharePlaceScreen extends Component {
   constructor(props) {
@@ -43,10 +44,7 @@ class SharePlaceScreen extends Component {
           <HeroImage />
           <View style={styles.container}>
             <HeadingOne>Add new place!</HeadingOne>
-            <View style={styles.placeholder}>
-              <Text>Image placeholder</Text>
-            </View>
-            <Button title="Select an image" />
+            <AddImage />
             <View style={styles.placeholder}>
               <Text>Map placeholder</Text>
             </View>
