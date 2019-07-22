@@ -41,7 +41,7 @@ class SharePlaceScreen extends Component {
         <HeroImage />
         <ScrollView>
           <View style={styles.container}>
-            <Text>Share a place!</Text>
+            <Text style={styles.heading}>Add new place!</Text>
             <View>
               <Text>Image placeholder</Text>
             </View>
@@ -64,7 +64,14 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 20,
     justifyContent: 'center'
+  },
+  heading: {
+    textAlign: 'center',
+    fontSize: 28,
+    color: '#000',
+    margin: 16
   }
+
 })
 
 const mapDispatchToProps = dispatch => {
