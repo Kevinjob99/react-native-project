@@ -13,6 +13,7 @@ import { addPlace } from "../store/actions/actionCreators";
 import HeroImage from "../components/HeroImage";
 import HeadingOne from '../components/UI/HeadingOne';
 import AddImage from "../components/AddImage";
+import AddLocation from "../components/AddLocation";
 
 class SharePlaceScreen extends Component {
   constructor(props) {
@@ -45,10 +46,7 @@ class SharePlaceScreen extends Component {
           <View style={styles.container}>
             <HeadingOne>Add new place!</HeadingOne>
             <AddImage />
-            <View style={styles.placeholder}>
-              <Text>Map placeholder</Text>
-            </View>
-            <Button title="Locate me" />
+            <AddLocation />
             <TextInput placeholder="Place name" underlineColorAndroid="#000" style={styles.input} />
             <Button title="Add new place" />
           </View>
