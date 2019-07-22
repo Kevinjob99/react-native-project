@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import {
   View,
-  Text,
   Button,
-  TextInput,
   ScrollView,
   StyleSheet
 } from "react-native";
@@ -14,6 +12,7 @@ import HeroImage from "../components/HeroImage";
 import HeadingOne from '../components/UI/HeadingOne';
 import AddImage from "../components/AddImage";
 import AddLocation from "../components/AddLocation";
+import NewPlaceForm from '../components/NewPlaceForm';
 
 class SharePlaceScreen extends Component {
   constructor(props) {
@@ -47,7 +46,7 @@ class SharePlaceScreen extends Component {
             <HeadingOne>Add new place!</HeadingOne>
             <AddImage />
             <AddLocation />
-            <TextInput placeholder="Place name" underlineColorAndroid="#000" style={styles.input} />
+            <NewPlaceForm />
             <Button title="Add new place" />
           </View>
         </View>
@@ -61,20 +60,6 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 20,
     justifyContent: "center"
-  },
-  placeholder: {
-    width: "100%",
-    height: 150,
-    borderWidth: 1,
-    borderColor: "#000",
-    backgroundColor: "#f2f2f2",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 16,
-    marginBottom: 16
-  },
-  input: {
-    marginVertical: 16
   }
 });
 
