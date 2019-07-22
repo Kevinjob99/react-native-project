@@ -4,9 +4,10 @@ import {
   View,
   Dimensions,
   TouchableOpacity,
-  StyleSheet
+  StyleSheet,
+  Platform
 } from "react-native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import Icon from "react-native-vector-icons/Ionicons";
 
 class SideDrawerScreen extends Component {
   render() {
@@ -20,7 +21,7 @@ class SideDrawerScreen extends Component {
         <TouchableOpacity>
           <View style={styles.itemContainer}>
             <View style={styles.icon}>
-              <Icon name="logout-variant" size={30} color="#000" />
+              <Icon name={Platform.OS === 'android' ? 'md-log-out' : 'ios-log-out'} size={30} color="#000" />
             </View>
             <Text style={styles.text}>Sign out</Text>
           </View>
@@ -46,7 +47,8 @@ const styles = StyleSheet.create({
     width: "15%"
   },
   text: {
-    fontSize: 16
+    fontSize: 16,
+    color: '#000'
   }
 });
 
