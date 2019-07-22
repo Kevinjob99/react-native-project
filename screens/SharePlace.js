@@ -37,42 +37,52 @@ class SharePlaceScreen extends Component {
 
   render() {
     return (
-      <View>
-        <HeroImage />
-        <ScrollView>
+      <ScrollView>
+        <View>
+          <HeroImage />
           <View style={styles.container}>
             <Text style={styles.heading}>Add new place!</Text>
-            <View>
+            <View style={styles.placeholder}>
               <Text>Image placeholder</Text>
             </View>
             <Button title="Select an image" />
-            <View>
+            <View style={styles.placeholder}>
               <Text>Map placeholder</Text>
             </View>
             <Button title="Locate me" />
-            <TextInput placeholder="Place name" />
+            <TextInput placeholder="Place name" underlineColorAndroid="#000" />
             <Button title="Add new place" />
           </View>
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    width: "100%",
     padding: 20,
-    justifyContent: 'center'
+    justifyContent: "center"
   },
   heading: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 28,
-    color: '#000',
+    color: "#000",
     margin: 16
+  },
+  placeholder: {
+    width: "100%",
+    height: 150,
+    borderWidth: 1,
+    borderColor: "#000",
+    backgroundColor: "#f2f2f2",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 16,
+    marginBottom: 16
   }
-
-})
+});
 
 const mapDispatchToProps = dispatch => {
   return {
