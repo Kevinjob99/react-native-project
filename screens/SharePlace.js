@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 
 import { addPlace } from "../store/actions/actionCreators";
 import HeroImage from "../components/HeroImage";
+import HeadingOne from '../components/UI/HeadingOne';
 
 class SharePlaceScreen extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class SharePlaceScreen extends Component {
         <View>
           <HeroImage />
           <View style={styles.container}>
-            <Text style={styles.heading}>Add new place!</Text>
+            <HeadingOne>Add new place!</HeadingOne>
             <View style={styles.placeholder}>
               <Text>Image placeholder</Text>
             </View>
@@ -64,12 +65,6 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 20,
     justifyContent: "center"
-  },
-  heading: {
-    textAlign: "center",
-    fontSize: 28,
-    color: "#000",
-    margin: 16
   },
   placeholder: {
     width: "100%",
