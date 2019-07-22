@@ -1,24 +1,26 @@
 import React, { Component } from "react";
-import {
-  View,
-  Button,
-  ScrollView,
-  StyleSheet
-} from "react-native";
+import { View, Button, ScrollView, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 
 import { addPlace } from "../store/actions/actionCreators";
 import HeroImage from "../components/HeroImage";
-import HeadingOne from '../components/UI/HeadingOne';
+import HeadingOne from "../components/UI/HeadingOne";
 import AddImage from "../components/AddImage";
 import AddLocation from "../components/AddLocation";
-import NewPlaceForm from '../components/NewPlaceForm';
+import NewPlaceForm from "../components/NewPlaceForm";
 
 class SharePlaceScreen extends Component {
   constructor(props) {
     super(props);
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
   }
+  state = {
+    placeName: ""
+  };
+
+  changeTextHandler = val => {
+    this.setState({ placeName: val });
+  };
 
   onNavigatorEvent = event => {
     console.log(event);
@@ -33,8 +35,11 @@ class SharePlaceScreen extends Component {
     }
   };
 
-  onAddedPlace = name => {
-    this.props.onAddPlace(name);
+  submitHandler = () => {
+    if (this.state.placeName.trim() === "") {
+      return;
+    }
+    this.props.onAddPlace(this.state.placeName);
   };
 
   render() {
@@ -46,8 +51,11 @@ class SharePlaceScreen extends Component {
             <HeadingOne>Add new place!</HeadingOne>
             <AddImage />
             <AddLocation />
-            <NewPlaceForm />
-            <Button title="Add new place" />
+            <NewPlaceForm
+              placeName={this.state.placeName}
+              onChangeText={this.changeTextHandler}
+            />
+            <Button title="Add new place" onPress={this.submitHandler} />
           </View>
         </View>
       </ScrollView>
