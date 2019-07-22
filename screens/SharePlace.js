@@ -50,7 +50,7 @@ class SharePlaceScreen extends Component {
               <Text>Map placeholder</Text>
             </View>
             <Button title="Locate me" />
-            <TextInput placeholder="Place name" underlineColorAndroid="#000" />
+            <TextInput placeholder="Place name" underlineColorAndroid="#000" style={styles.input} />
             <Button title="Add new place" />
           </View>
         </View>
@@ -81,6 +81,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 16,
     marginBottom: 16
+  },
+  input: {
+    marginVertical: 16
   }
 });
 
