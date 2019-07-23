@@ -5,29 +5,28 @@ import startTabs from "./startMainTabs";
 import DefaultInput from "../components/UI/DefaultInput";
 import HeadingOne from "../components/UI/HeadingOne";
 import backgroundImage from "../assets/hills.jpg";
-import PrimaryButton from '../components/UI/PrimaryButton';
+import PrimaryButton from "../components/UI/PrimaryButton";
 
 class AuthScreen extends Component {
-
   state = {
-    viewMode: Dimensions.get('window').height > 500 ? 'portrait' : 'landscape'
+    viewMode: Dimensions.get("window").height > 500 ? "portrait" : "landscape"
   };
 
   constructor(props) {
     super(props);
-    Dimensions.addEventListener('change', this.updateMode);
+    Dimensions.addEventListener("change", this.updateMode);
   }
 
   componentWillUnmount = () => {
-    Dimensions.removeEventListener('change', this.updateMode);
-  }
+    Dimensions.removeEventListener("change", this.updateMode);
+  };
 
-  updateMode = (dims) => {
+  updateMode = dims => {
     this.setState({
-      viewMode: Dimensions.get('window').height > 500 ? 'portrait' : 'landscape'
-    })
-  }
-  
+      viewMode: Dimensions.get("window").height > 500 ? "portrait" : "landscape"
+    });
+  };
+
   loginHandler = () => {
     startTabs();
   };
@@ -44,16 +43,30 @@ class AuthScreen extends Component {
               style={styles.input}
               underlineColorAndroid="#fff"
             />
+            <View style={styles.portraitPasswordContainer}>
+              <DefaultInput
+                placeholder="Your password"
+                placeholderTextColor="#fff"
+                style={styles.portraitPassword}
+                underlineColorAndroid="#fff"
+              />
+              <DefaultInput
+                placeholder="Confirm password"
+                placeholderTextColor="#fff"
+                style={styles.portraitPassword}
+                underlineColorAndroid="#fff"
+              />
+            </View>
             <DefaultInput
               placeholder="Your password"
               placeholderTextColor="#fff"
-              style={styles.input}
+              style={styles.portraitPassword}
               underlineColorAndroid="#fff"
             />
             <DefaultInput
               placeholder="Confirm password"
               placeholderTextColor="#fff"
-              style={styles.input}
+              style={styles.portraitPassword}
               underlineColorAndroid="#fff"
             />
           </View>
@@ -82,9 +95,9 @@ const styles = StyleSheet.create({
     marginBottom: 16
   },
   buttonsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '80%',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "80%",
     padding: 20
   },
   inputContainer: {
@@ -93,6 +106,14 @@ const styles = StyleSheet.create({
   input: {
     padding: 10,
     color: "#fff"
+  },
+  portraitPasswordContainer: {
+    flexDirection: 'column',
+    justifyContent: 'center'
+  },
+  landscapePasswordContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 });
 
