@@ -43,32 +43,20 @@ class AuthScreen extends Component {
               style={styles.input}
               underlineColorAndroid="#fff"
             />
-            <View style={styles.portraitPasswordContainer}>
+            <View style={this.state.viewMode === 'portrait' ? styles.portraitPasswordContainer : styles.landscapePasswordContainer}>
               <DefaultInput
                 placeholder="Your password"
                 placeholderTextColor="#fff"
-                style={styles.portraitPassword}
+                style={[styles.input, this.state.viewMode === 'portrait' ? styles.portraitPassword : styles.landscapePassword]}
                 underlineColorAndroid="#fff"
               />
               <DefaultInput
                 placeholder="Confirm password"
                 placeholderTextColor="#fff"
-                style={styles.portraitPassword}
+                style={[styles.input, this.state.viewMode === 'portrait' ? styles.portraitPassword : styles.landscapePassword]}
                 underlineColorAndroid="#fff"
               />
             </View>
-            <DefaultInput
-              placeholder="Your password"
-              placeholderTextColor="#fff"
-              style={styles.portraitPassword}
-              underlineColorAndroid="#fff"
-            />
-            <DefaultInput
-              placeholder="Confirm password"
-              placeholderTextColor="#fff"
-              style={styles.portraitPassword}
-              underlineColorAndroid="#fff"
-            />
           </View>
           <View style={styles.buttonsContainer}>
             <PrimaryButton>Switch to Login</PrimaryButton>
@@ -96,7 +84,7 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     width: "80%",
     padding: 20
   },
@@ -116,10 +104,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   portraitPassword: {
-    width: '48%'
+    width: '100%'
   },
   landscapePassword: {
-    width: '100%'
+    width: '48%'
   }
 });
 
