@@ -114,6 +114,12 @@ const styles = StyleSheet.create({
   landscapePasswordContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between'
+  },
+  portraitPassword: {
+    width: '48%'
+  },
+  landscapePassword: {
+    width: '100%'
   }
 });
 
