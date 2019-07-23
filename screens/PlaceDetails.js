@@ -1,29 +1,35 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, Image, TouchableOpacity, Dimensions } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Dimensions
+} from "react-native";
 import { connect } from "react-redux";
 
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { deletePlace } from "../store/actions/actionCreators";
 
 class PlaceDetailsScreen extends Component {
-
   state = {
-    viewMode: Dimensions.get('window').height > 500 ? 'portrait' : 'landscape'
-  }
+    viewMode: Dimensions.get("window").height > 500 ? "portrait" : "landscape"
+  };
 
   componentWillMount = () => {
-    Dimensions.addEventListener('change', this.updateMode)
-  }
+    Dimensions.addEventListener("change", this.updateMode);
+  };
 
   componentWillUnmount = () => {
-    Dimensions.removeEventListener('change', this.updateMode)
-  }
+    Dimensions.removeEventListener("change", this.updateMode);
+  };
 
   updateMode = () => {
     this.setState({
-      viewMode: Dimensions.get('window').height > 500 ? 'portrait' : 'landscape'
-    })
-  }
+      viewMode: Dimensions.get("window").height > 500 ? "portrait" : "landscape"
+    });
+  };
 
   deletePlaceHandler = () => {
     this.props.onDeletePlace(this.props.selectedPlace.key);
@@ -36,9 +42,16 @@ class PlaceDetailsScreen extends Component {
     const { selectedPlace } = this.props;
 
     return (
-      <View style={styles.modalContainer}>
-        <Image source={selectedPlace.image} style={styles.modalImage} />
-        <View>
+      <View
+        style={[
+          styles.modalContainer,
+          this.state.viewMode === "portrait"
+            ? styles.portraitModalContainer
+            : styles.landscapeModalContainer
+        ]}
+      >
+        <Image source={selectedPlace.image} style={[styles.modalImage, this.state.viewMode === 'portrait' ? styles.portraitModalImage : styles.landscapeModalImage]} />
+        <View style={this.state.viewMode === 'portrait' ? styles.portraitDetailsContainer : styles.landscapeDetailsContainer}>
           <Text style={styles.modalTitle}>{selectedPlace.name}</Text>
           <View style={styles.modalButtonsContainer}>
             <TouchableOpacity onPress={this.deletePlaceHandler}>
@@ -58,9 +71,26 @@ const styles = StyleSheet.create({
   modalContainer: {
     flex: 1
   },
+  portraitModalContainer: {
+    flexDirection: "column"
+  },
+  landscapeModalContainer: {
+    flexDirection: "row"
+  },
   modalImage: {
-    width: "100%",
     height: 200
+  },
+  portraitModalImage: {
+    width: '100%'
+  },
+  landscapeModalImage: {
+    width: '50%'
+  },
+  portraitDetailsContainer: {
+    width: '100%'
+  },
+  landscapeDetailsContainer: {
+    width: '50%'
   },
   modalTitle: {
     textAlign: "center",
