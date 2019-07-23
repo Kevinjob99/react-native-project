@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Button, StyleSheet, ImageBackground } from "react-native";
+import { View, StyleSheet, ImageBackground, Dimensions } from "react-native";
 
 import startTabs from "./startMainTabs";
 import DefaultInput from "../components/UI/DefaultInput";
@@ -8,6 +8,17 @@ import backgroundImage from "../assets/hills.jpg";
 import PrimaryButton from '../components/UI/PrimaryButton';
 
 class AuthScreen extends Component {
+
+  state = {
+    viewMode: Dimensions.get('window').height > 500 ? 'portrait' : 'landscape'
+  };
+
+  updateMode = (dims) => {
+    this.setState({
+      viewMode: Dimensions.get('window').height > 500 ? 'portrait' : 'landscape'
+    })
+  }
+  
   loginHandler = () => {
     startTabs();
   };
