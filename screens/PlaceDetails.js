@@ -15,6 +15,10 @@ class PlaceDetailsScreen extends Component {
     Dimensions.addEventListener('change', this.updateMode)
   }
 
+  componentWillUnmount = () => {
+    Dimensions.removeEventListener('change', this.updateMode)
+  }
+
   updateMode = () => {
     this.setState({
       viewMode: Dimensions.get('window').height > 500 ? 'portrait' : 'landscape'
