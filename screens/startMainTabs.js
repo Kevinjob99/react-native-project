@@ -38,6 +38,9 @@ const startTabs = () => {
           }
         }
       ],
+      appStyle: {
+        tabBarSelectedButtonColor: '#22421D'
+      },
       drawer: {
         left: {
           screen: 'my-awesome-places.SideDrawerScreen'
