@@ -19,6 +19,7 @@ const startTabs = () => {
           navigatorButtons: {
             leftButtons: [{
               icon: sources[2],
+              buttonColor: '#22421D',
               title: 'Menu',
               id: 'sideDrawerToggle'
             }]
@@ -32,6 +33,7 @@ const startTabs = () => {
           navigatorButtons: {
             leftButtons: [{
               icon: sources[2],
+              buttonColor: '#22421D',
               title: 'Menu',
               id: 'sideDrawerToggle'
             }]
