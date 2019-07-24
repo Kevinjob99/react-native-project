@@ -39,25 +39,35 @@ class FindPlaceScreen extends Component {
       }
     });
   };
+
+  loadPlaceList = () => {
+    this.setState({
+      placeListLoaded: true
+    });
+  };
+
   render() {
     const { placeListLoaded } = this.state;
 
     return (
       <React.Fragment>
         <HeroImage />
-        <View style={styles.container}>
-          {!placeListLoaded && (
-            <TouchableOpacity>
+        {!placeListLoaded && (
+          <View style={styles.container}>
+            <TouchableOpacity onPress={this.loadPlaceList}>
               <View style={styles.button}>
                 <Text style={styles.buttonText}>Find Places</Text>
               </View>
             </TouchableOpacity>
-          )}
-          {/* <List
-          places={this.props.places}
-          selectPlace={this.selectPlaceHandler}
-        /> */}
-        </View>
+          </View>
+        )}
+
+        {placeListLoaded && (
+          <List
+            places={this.props.places}
+            selectPlace={this.selectPlaceHandler}
+          />
+        )}
       </React.Fragment>
     );
   }
