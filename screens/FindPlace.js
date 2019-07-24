@@ -43,22 +43,22 @@ class FindPlaceScreen extends Component {
     const { placeListLoaded } = this.state;
 
     return (
-      <View>
+      <React.Fragment>
         <HeroImage />
-        {!placeListLoaded && (
-          <View style={styles.container}>
+        <View style={styles.container}>
+          {!placeListLoaded && (
             <TouchableOpacity>
-              <View>
-                <Text>Find Places</Text>
+              <View style={styles.button}>
+                <Text style={styles.buttonText}>Find Places</Text>
               </View>
             </TouchableOpacity>
-          </View>
-        )}
-        {/* <List
+          )}
+          {/* <List
           places={this.props.places}
           selectPlace={this.selectPlaceHandler}
         /> */}
-      </View>
+        </View>
+      </React.Fragment>
     );
   }
 }
@@ -66,10 +66,21 @@ class FindPlaceScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  button: {
+    borderWidth: 3,
+    borderColor: "#22421D",
+    borderRadius: 50,
+    padding: 20
+  },
+  buttonText: {
+    color: "#22421D",
+    fontSize: 28,
+    fontWeight: "bold"
   }
-})
+});
 
 const mapStateToProps = state => {
   return {
