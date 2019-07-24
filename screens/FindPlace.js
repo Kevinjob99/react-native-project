@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
 import List from '../components/List';
 import HeroImage from '../components/HeroImage';
 
 class FindPlaceScreen extends Component {
+
+  state = {
+    placeListLoaded: false
+  }
 
   constructor(props) {
     super(props);
@@ -40,13 +44,23 @@ class FindPlaceScreen extends Component {
     });
   }
   render() {
+
+    const { placeListLoaded } = this.state;
+
     return (
       <View>
         <HeroImage />
-        <List
+        {!placeListLoaded &&
+          <TouchableOpacity>
+            <View>
+              <Text>Find Places</Text>
+            </View>
+          </TouchableOpacity>
+        }
+        {/* <List
           places={this.props.places}
           selectPlace={this.selectPlaceHandler}
-        />
+        /> */}
       </View>
     )
   }
