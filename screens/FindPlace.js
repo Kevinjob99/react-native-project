@@ -14,7 +14,8 @@ import HeroImage from "../components/HeroImage";
 class FindPlaceScreen extends Component {
   state = {
     placeListLoaded: false,
-    removeAnimation: new Animated.Value(1)
+    removeAnimation: new Animated.Value(1),
+    fadeAnimation: new Animated.Value(0)
   };
 
   constructor(props) {
@@ -48,7 +49,11 @@ class FindPlaceScreen extends Component {
   };
 
   placesLoadedHandler = () => {
-
+    Animated.timing(this.state.fadeAnimation, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true
+    }).start();
   }
 
   loadPlaceList = () => {
