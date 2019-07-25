@@ -47,15 +47,22 @@ class FindPlaceScreen extends Component {
     });
   };
 
+  placesLoadedHandler = () => {
+
+  }
+
   loadPlaceList = () => {
     Animated.timing(this.state.removeAnimation, {
       toValue: 0,
       duration: 1000,
       useNativeDriver: true
-    }).start();
-    // this.setState({
-    //   placeListLoaded: true
-    // });
+    }).start(() => {
+      this.setState({
+        placeListLoaded: true
+      });
+      this.placesLoadedHandler();
+    });
+
   };
 
   render() {
