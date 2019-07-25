@@ -53,9 +53,9 @@ class FindPlaceScreen extends Component {
       duration: 1000,
       useNativeDriver: true
     }).start();
-    this.setState({
-      placeListLoaded: true
-    });
+    // this.setState({
+    //   placeListLoaded: true
+    // });
   };
 
   render() {
@@ -67,7 +67,15 @@ class FindPlaceScreen extends Component {
         {!placeListLoaded && (
           <View style={styles.container}>
             <Animated.View style={{
-              opacity: this.state.removeAnimation
+              opacity: this.state.removeAnimation,
+              transform: [
+                {
+                  scale: this.state.removeAnimation.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [10, 1]
+                  })
+                }
+              ]
             }}>
               <TouchableOpacity onPress={this.loadPlaceList}>
                 <View style={styles.button}>
