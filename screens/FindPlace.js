@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
+import {
+  View,
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  Animated
+} from "react-native";
 import { connect } from "react-redux";
 
 import List from "../components/List";
@@ -7,7 +13,8 @@ import HeroImage from "../components/HeroImage";
 
 class FindPlaceScreen extends Component {
   state = {
-    placeListLoaded: false
+    placeListLoaded: false,
+    removeAnimation: new Animated.Value(1)
   };
 
   constructor(props) {
@@ -41,6 +48,11 @@ class FindPlaceScreen extends Component {
   };
 
   loadPlaceList = () => {
+    Animated.timing(this.state.removeAnimation, {
+      toValue: 0,
+      duration: 1000,
+      useNativeDriver: true
+    }).start();
     this.setState({
       placeListLoaded: true
     });
@@ -54,11 +66,15 @@ class FindPlaceScreen extends Component {
         <HeroImage />
         {!placeListLoaded && (
           <View style={styles.container}>
-            <TouchableOpacity onPress={this.loadPlaceList}>
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>Find Places</Text>
-              </View>
-            </TouchableOpacity>
+            <Animated.View style={{
+              opacity: this.state.removeAnimation
+            }}>
+              <TouchableOpacity onPress={this.loadPlaceList}>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>Find Places</Text>
+                </View>
+              </TouchableOpacity>
+            </Animated.View>
           </View>
         )}
 
