@@ -54,7 +54,7 @@ class FindPlaceScreen extends Component {
       duration: 1000,
       useNativeDriver: true
     }).start();
-  }
+  };
 
   loadPlaceList = () => {
     Animated.timing(this.state.removeAnimation, {
@@ -67,7 +67,6 @@ class FindPlaceScreen extends Component {
       });
       this.placesLoadedHandler();
     });
-
   };
 
   render() {
@@ -78,17 +77,19 @@ class FindPlaceScreen extends Component {
         <HeroImage />
         {!placeListLoaded && (
           <View style={styles.container}>
-            <Animated.View style={{
-              opacity: this.state.removeAnimation,
-              transform: [
-                {
-                  scale: this.state.removeAnimation.interpolate({
-                    inputRange: [0, 1],
-                    outputRange: [10, 1]
-                  })
-                }
-              ]
-            }}>
+            <Animated.View
+              style={{
+                opacity: this.state.removeAnimation,
+                transform: [
+                  {
+                    scale: this.state.removeAnimation.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [10, 1]
+                    })
+                  }
+                ]
+              }}
+            >
               <TouchableOpacity onPress={this.loadPlaceList}>
                 <View style={styles.button}>
                   <Text style={styles.buttonText}>Find Places</Text>
@@ -99,10 +100,14 @@ class FindPlaceScreen extends Component {
         )}
 
         {placeListLoaded && (
-          <List
-            places={this.props.places}
-            selectPlace={this.selectPlaceHandler}
-          />
+          <Animated.View style={{
+            opacity: this.state.fadeAnimation
+          }}>
+            <List
+              places={this.props.places}
+              selectPlace={this.selectPlaceHandler}
+            />
+          </Animated.View>
         )}
       </React.Fragment>
     );
