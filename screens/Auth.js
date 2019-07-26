@@ -54,6 +54,18 @@ class AuthScreen extends Component {
     startTabs();
   };
 
+  changeInputHandler = (key, value) => {
+    this.setState(prevState => {
+      return {
+        ...prevState.controls,
+        [key]: {
+          ...prevState.controls[key],
+          value: value
+        }
+      }
+    })
+  }
+
   render() {
     return (
       <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
