@@ -9,7 +9,30 @@ import PrimaryButton from "../components/UI/PrimaryButton";
 
 class AuthScreen extends Component {
   state = {
-    viewMode: Dimensions.get("window").height > 500 ? "portrait" : "landscape"
+    viewMode: Dimensions.get("window").height > 500 ? "portrait" : "landscape",
+    controls: {
+      email: {
+        value: '',
+        valid: false,
+        validationRules: {
+          isEmail: true
+        }
+      },
+      password: {
+        value: '',
+        valid: false,
+        validationRules: {
+          minLength: 6
+        }
+      },
+      confirmPassword: {
+        value: '',
+        valid: false,
+        validationRules: {
+          equalTo: 'password'
+        }
+      }
+    }
   };
 
   constructor(props) {
