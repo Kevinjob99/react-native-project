@@ -19,6 +19,8 @@ const emailValidator = val => {
   return /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(val);
 };
 
-const passwordValidator = (val, minLength) => {};
+const passwordValidator = (val, minLength) => {
+  return val.length >= minLength;
+};
 
 const confirmPasswordValidator = (val, checkVal) => {};
