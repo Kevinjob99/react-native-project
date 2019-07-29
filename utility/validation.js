@@ -1,0 +1,22 @@
+const validate = (val, rules) => {
+  let isValid = true;
+  for (const rule in rules) {
+    switch (rule) {
+      case "isEmail":
+        isValid = isValid && emailValidator(val);
+      case "minLength":
+        isValid = isValid && passwordValidator(val, rules[rule]);
+      case "equalTo":
+        isValid = isValid && confirmPasswordValidator(val, rules[rule]);
+      default:
+        isValid = true;
+    }
+    return isValid;
+  }
+};
+
+const emailValidator = val => {};
+
+const passwordValidator = (val, minLength) => {};
+
+const confirmPasswordValidator = (val, checkVal) => {};
