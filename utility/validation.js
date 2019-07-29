@@ -23,4 +23,6 @@ const passwordValidator = (val, minLength) => {
   return val.length >= minLength;
 };
 
-const confirmPasswordValidator = (val, checkVal) => {};
+const confirmPasswordValidator = (val, checkVal) => {
+  return val === checkVal;
+};
