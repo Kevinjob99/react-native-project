@@ -12,24 +12,24 @@ class AuthScreen extends Component {
     viewMode: Dimensions.get("window").height > 500 ? "portrait" : "landscape",
     controls: {
       email: {
-        value: '',
+        value: "",
         valid: false,
         validationRules: {
           isEmail: true
         }
       },
       password: {
-        value: '',
+        value: "",
         valid: false,
         validationRules: {
           minLength: 6
         }
       },
       confirmPassword: {
-        value: '',
+        value: "",
         valid: false,
         validationRules: {
-          equalTo: 'password'
+          equalTo: "password"
         }
       }
     }
@@ -57,14 +57,16 @@ class AuthScreen extends Component {
   changeInputHandler = (key, value) => {
     this.setState(prevState => {
       return {
-        ...prevState.controls,
-        [key]: {
-          ...prevState.controls[key],
-          value: value
+        controls: {
+          ...prevState.controls,
+          [key]: {
+            ...prevState.controls[key],
+            value: value
+          }
         }
-      }
-    })
-  }
+      };
+    });
+  };
 
   render() {
     return (
@@ -77,19 +79,43 @@ class AuthScreen extends Component {
               placeholderTextColor="#fff"
               style={styles.input}
               underlineColorAndroid="#fff"
+              value={this.state.controls.email.value}
+              onChangeText={value => this.changeInputHandler("email", value)}
             />
-            <View style={this.state.viewMode === 'portrait' ? styles.portraitPasswordContainer : styles.landscapePasswordContainer}>
+            <View
+              style={
+                this.state.viewMode === "portrait"
+                  ? styles.portraitPasswordContainer
+                  : styles.landscapePasswordContainer
+              }
+            >
               <DefaultInput
                 placeholder="Your password"
                 placeholderTextColor="#fff"
-                style={[styles.input, this.state.viewMode === 'portrait' ? styles.portraitPassword : styles.landscapePassword]}
+                style={[
+                  styles.input,
+                  this.state.viewMode === "portrait"
+                    ? styles.portraitPassword
+                    : styles.landscapePassword
+                ]}
                 underlineColorAndroid="#fff"
+                value={this.state.controls.password.value}
+                onChangeText={value => this.changeInputHandler("password", value)}
+
               />
               <DefaultInput
                 placeholder="Confirm password"
                 placeholderTextColor="#fff"
-                style={[styles.input, this.state.viewMode === 'portrait' ? styles.portraitPassword : styles.landscapePassword]}
+                style={[
+                  styles.input,
+                  this.state.viewMode === "portrait"
+                    ? styles.portraitPassword
+                    : styles.landscapePassword
+                ]}
                 underlineColorAndroid="#fff"
+                value={this.state.controls.confirmPassword.value}
+                onChangeText={value => this.changeInputHandler("confirmPassword", value)}
+
               />
             </View>
           </View>
@@ -131,18 +157,18 @@ const styles = StyleSheet.create({
     color: "#fff"
   },
   portraitPasswordContainer: {
-    flexDirection: 'column',
-    justifyContent: 'center'
+    flexDirection: "column",
+    justifyContent: "center"
   },
   landscapePasswordContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between'
+    flexDirection: "row",
+    justifyContent: "space-between"
   },
   portraitPassword: {
-    width: '100%'
+    width: "100%"
   },
   landscapePassword: {
-    width: '48%'
+    width: "48%"
   }
 });
 
