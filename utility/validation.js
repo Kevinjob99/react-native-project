@@ -26,3 +26,5 @@ const passwordValidator = (val, minLength) => {
 const confirmPasswordValidator = (val, checkVal) => {
   return val === checkVal;
 };
+
+export default validate;
