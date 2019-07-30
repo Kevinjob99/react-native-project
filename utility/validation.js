@@ -4,10 +4,16 @@ const validate = (val, rules, connectedValue) => {
     switch (rule) {
       case "isEmail":
         isValid = isValid && emailValidator(val);
+        break;
+
       case "minLength":
         isValid = isValid && passwordValidator(val, rules[rule]);
+        break;
+
       case "equalTo":
         isValid = isValid && confirmPasswordValidator(val, connectedValue[rule]);
+        break;
+
       default:
         isValid = true;
     }
