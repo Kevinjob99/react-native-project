@@ -61,7 +61,7 @@ class AuthScreen extends Component {
     if (this.state.controls[key].validationRules.equalTo) {
       const equalControl = this.state.controls[key].validationRules.equalTo;
       const equalValue = this.state.controls[equalControl].value;
-      
+
       connectedValue = {
         ...connectedValue,
         equalTo: equalValue
@@ -115,6 +115,7 @@ class AuthScreen extends Component {
               underlineColorAndroid="#fff"
               value={this.state.controls.email.value}
               onChangeText={value => this.changeInputHandler("email", value)}
+              valid={this.state.controls.email.valid}
             />
             <View
               style={
@@ -137,6 +138,7 @@ class AuthScreen extends Component {
                 onChangeText={value =>
                   this.changeInputHandler("password", value)
                 }
+                valid={this.state.controls.password.valid}
               />
               <DefaultInput
                 placeholder="Confirm password"
@@ -152,6 +154,7 @@ class AuthScreen extends Component {
                 onChangeText={value =>
                   this.changeInputHandler("confirmPassword", value)
                 }
+                valid={this.state.controls.confirmPassword.valid}
               />
             </View>
           </View>
