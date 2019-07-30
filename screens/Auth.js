@@ -6,7 +6,7 @@ import DefaultInput from "../components/UI/DefaultInput";
 import HeadingOne from "../components/UI/HeadingOne";
 import backgroundImage from "../assets/hills.jpg";
 import PrimaryButton from "../components/UI/PrimaryButton";
-import validate from '../utility/validation';
+import validate from "../utility/validation";
 
 class AuthScreen extends Component {
   state = {
@@ -30,7 +30,7 @@ class AuthScreen extends Component {
         value: "",
         valid: false,
         validationRules: {
-          equalTo: 'password'
+          equalTo: "password"
         }
       }
     }
@@ -57,19 +57,21 @@ class AuthScreen extends Component {
 
   changeInputHandler = (key, value) => {
     let connectedValue = {};
-    const equalControl = this.state.controls[key].validationRules.equalTo;
-    const equalValue = this.state.controls[equalControl].value;
+
     if (this.state.controls[key].validationRules.equalTo) {
+      const equalControl = this.state.controls[key].validationRules.equalTo;
+      const equalValue = this.state.controls[equalControl].value;
+      
       connectedValue = {
         ...connectedValue,
         equalTo: equalValue
-      }
+      };
     }
-    if (key === 'password') {
+    if (key === "password") {
       connectedValue = {
         ...connectedValue,
         equalTo: value
-      }
+      };
     }
     this.setState(prevState => {
       return {
@@ -132,8 +134,9 @@ class AuthScreen extends Component {
                 ]}
                 underlineColorAndroid="#fff"
                 value={this.state.controls.password.value}
-                onChangeText={value => this.changeInputHandler("password", value)}
-
+                onChangeText={value =>
+                  this.changeInputHandler("password", value)
+                }
               />
               <DefaultInput
                 placeholder="Confirm password"
@@ -146,8 +149,9 @@ class AuthScreen extends Component {
                 ]}
                 underlineColorAndroid="#fff"
                 value={this.state.controls.confirmPassword.value}
-                onChangeText={value => this.changeInputHandler("confirmPassword", value)}
-
+                onChangeText={value =>
+                  this.changeInputHandler("confirmPassword", value)
+                }
               />
             </View>
           </View>
