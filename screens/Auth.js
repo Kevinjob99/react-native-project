@@ -6,6 +6,7 @@ import DefaultInput from "../components/UI/DefaultInput";
 import HeadingOne from "../components/UI/HeadingOne";
 import backgroundImage from "../assets/hills.jpg";
 import PrimaryButton from "../components/UI/PrimaryButton";
+import validate from '../utility/validation';
 
 class AuthScreen extends Component {
   state = {
@@ -29,7 +30,7 @@ class AuthScreen extends Component {
         value: "",
         valid: false,
         validationRules: {
-          equalTo: "password"
+          equalTo: 'password'
         }
       }
     }
@@ -55,13 +56,44 @@ class AuthScreen extends Component {
   };
 
   changeInputHandler = (key, value) => {
+    let connectedValue = {};
+    const equalControl = this.state.controls[key].validationRules.equalTo;
+    const equalValue = this.state.controls[equalControl].value;
+    if (this.state.controls[key].validationRules.equalTo) {
+      connectedValue = {
+        ...connectedValue,
+        equalTo: equalValue
+      }
+    }
+    if (key === 'password') {
+      connectedValue = {
+        ...connectedValue,
+        equalTo: value
+      }
+    }
     this.setState(prevState => {
       return {
         controls: {
           ...prevState.controls,
+          confirmPassword: {
+            ...prevState.controls.confirmPassword,
+            valid:
+              key === "password"
+                ? validate(
+                    prevState.controls.confirmPassword.value,
+                    prevState.controls.confirmPassword.validationRules,
+                    connectedValue
+                  )
+                : prevState.controls.confirmPassword.valid
+          },
           [key]: {
             ...prevState.controls[key],
-            value: value
+            value: value,
+            valid: validate(
+              value,
+              prevState.controls[key].validationRules,
+              connectedValue
+            )
           }
         }
       };
