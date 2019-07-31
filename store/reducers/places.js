@@ -1,3 +1,4 @@
+import { Dimensions } from 'react-native';
 import PlaceholderImage from "../../assets/placeholder-image.jpg";
 // import {
 //   ADD_PLACE,
@@ -5,14 +6,12 @@ import PlaceholderImage from "../../assets/placeholder-image.jpg";
 //   SELECT_PLACE,
 //   DESELECT_PLACE
 // } from "../actions/actionsTypes";
-import {
-  ADD_PLACE,
-  DELETE_PLACE
-} from "../actions/actionsTypes";
+import { ADD_PLACE, DELETE_PLACE, UPDATE_MODE} from "../actions/actionsTypes";
 
 const initialState = {
   places: [],
-  selectedPlace: null
+  selectedPlace: null,
+  viewMode: Dimensions.get('window').height > 500 ? 'portrait' : 'landscape'
 };
 
 const reducer = (state = initialState, action) => {
@@ -34,6 +33,11 @@ const reducer = (state = initialState, action) => {
           return place.key !== action.key;
         }),
         selectedPlace: null
+      };
+
+    case UPDATE_MODE:
+      return {
+        viewMode: Dimensions.get('window').height > 500 ? 'portrait' : 'landscape'
       };
 
     // case SELECT_PLACE:
