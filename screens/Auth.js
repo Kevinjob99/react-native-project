@@ -98,7 +98,8 @@ class AuthScreen extends Component {
               value,
               prevState.controls[key].validationRules,
               connectedValue
-            )
+            ),
+            touched: true
           }
         }
       };
