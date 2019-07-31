@@ -17,21 +17,24 @@ class AuthScreen extends Component {
         valid: false,
         validationRules: {
           isEmail: true
-        }
+        },
+        touched: false
       },
       password: {
         value: "",
         valid: false,
         validationRules: {
           minLength: 6
-        }
+        },
+        touched: false
       },
       confirmPassword: {
         value: "",
         valid: false,
         validationRules: {
           equalTo: "password"
-        }
+        },
+        touched: false
       }
     }
   };
