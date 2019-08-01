@@ -167,7 +167,16 @@ class AuthScreen extends Component {
           </View>
           <View style={styles.buttonsContainer}>
             <PrimaryButton>Switch to Login</PrimaryButton>
-            <PrimaryButton onPress={this.loginHandler}>Submit</PrimaryButton>
+            <PrimaryButton
+              onPress={this.loginHandler}
+              disabled={
+                !this.state.controls.email.valid ||
+                !this.state.controls.password.valid ||
+                !this.state.controls.confirmPassword.valid
+              }
+            >
+              Submit
+            </PrimaryButton>
           </View>
         </View>
       </ImageBackground>
