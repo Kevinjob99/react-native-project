@@ -140,7 +140,7 @@ class AuthScreen extends Component {
             />
             <View
               style={
-                this.state.viewMode === "portrait"
+                this.state.viewMode === "portrait" || this.state.authMode === 'login'
                   ? styles.portraitPasswordContainer
                   : styles.landscapePasswordContainer
               }
@@ -150,7 +150,7 @@ class AuthScreen extends Component {
                 placeholderTextColor="#fff"
                 style={[
                   styles.input,
-                  this.state.viewMode === "portrait"
+                  this.state.viewMode === "portrait" || this.state.authMode === 'login'
                     ? styles.portraitPassword
                     : styles.landscapePassword
                 ]}
