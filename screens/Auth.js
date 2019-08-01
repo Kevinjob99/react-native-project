@@ -186,7 +186,7 @@ class AuthScreen extends Component {
             </View>
           </View>
           <View style={styles.buttonsContainer}>
-            <PrimaryButton onPress={this.switchAuthMode}>Switch to Login</PrimaryButton>
+            <PrimaryButton onPress={this.switchAuthMode}>Switch to {this.state.authMode === 'login' ? 'Sign up' : "Login"}</PrimaryButton>
             <PrimaryButton
               onPress={this.loginHandler}
               disabled={
