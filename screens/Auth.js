@@ -126,7 +126,7 @@ class AuthScreen extends Component {
     return (
       <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
         <View style={styles.container}>
-          <HeadingOne style={styles.headingText}>Please signup</HeadingOne>
+          <HeadingOne style={styles.headingText}>Please {this.state.authMode === 'login' ? 'Sign in' : "Sign up"}</HeadingOne>
           <View style={styles.inputContainer}>
             <DefaultInput
               placeholder="Your e-mail"
