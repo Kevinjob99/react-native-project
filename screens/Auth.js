@@ -120,6 +120,7 @@ class AuthScreen extends Component {
               value={this.state.controls.email.value}
               onChangeText={value => this.changeInputHandler("email", value)}
               valid={this.state.controls.email.valid}
+              touched={this.state.controls.email.touched}
             />
             <View
               style={
@@ -143,6 +144,7 @@ class AuthScreen extends Component {
                   this.changeInputHandler("password", value)
                 }
                 valid={this.state.controls.password.valid}
+                touched={this.state.controls.password.touched}
               />
               <DefaultInput
                 placeholder="Confirm password"
@@ -159,6 +161,7 @@ class AuthScreen extends Component {
                   this.changeInputHandler("confirmPassword", value)
                 }
                 valid={this.state.controls.confirmPassword.valid}
+                touched={this.state.controls.confirmPassword.touched}
               />
             </View>
           </View>

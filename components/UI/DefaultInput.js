@@ -4,7 +4,7 @@ import { TextInput, StyleSheet } from 'react-native';
 const DefaultInput = props => (
   <TextInput
     {...props}
-    style={[styles.input, props.style, props.valid ? null : styles.invalid]}
+    style={[styles.input, props.style, !props.valid && props.touched  ? styles.invalid : null]}
   />
 )
 
