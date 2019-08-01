@@ -206,7 +206,7 @@ class AuthScreen extends Component {
               disabled={
                 !this.state.controls.email.valid ||
                 !this.state.controls.password.valid ||
-                !this.state.controls.confirmPassword.valid
+                !this.state.controls.confirmPassword.valid && this.state.authMode === 'signup'
               }
             >
               Submit
