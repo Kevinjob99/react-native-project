@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { View, StyleSheet, ImageBackground, Dimensions } from "react-native";
+import {
+  View,
+  StyleSheet,
+  ImageBackground,
+  Dimensions,
+  KeyboardAvoidingView
+} from "react-native";
 import { connect } from "react-redux";
 
 import startTabs from "./startMainTabs";
@@ -125,7 +131,7 @@ class AuthScreen extends Component {
   render() {
     return (
       <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
-        <View style={styles.container}>
+        <KeyboardAvoidingView style={styles.container} behavior="padding">
           <HeadingOne style={styles.headingText}>
             Please {this.state.authMode === "login" ? "Sign in" : "Sign up"}
           </HeadingOne>
@@ -206,13 +212,14 @@ class AuthScreen extends Component {
               disabled={
                 !this.state.controls.email.valid ||
                 !this.state.controls.password.valid ||
-                !this.state.controls.confirmPassword.valid && this.state.authMode === 'signup'
+                (!this.state.controls.confirmPassword.valid &&
+                  this.state.authMode === "signup")
               }
             >
               Submit
             </PrimaryButton>
           </View>
-        </View>
+        </KeyboardAvoidingView>
       </ImageBackground>
     );
   }
