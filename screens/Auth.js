@@ -13,6 +13,7 @@ import { tryAuth } from "../store/actions/actionCreators";
 class AuthScreen extends Component {
   state = {
     viewMode: Dimensions.get("window").height > 500 ? "portrait" : "landscape",
+    authMode: 'login',
     controls: {
       email: {
         value: "",
@@ -113,6 +114,14 @@ class AuthScreen extends Component {
     });
   };
 
+  switchAuthMode = () => {
+    this.setState(prevState => {
+      return {
+        authMode: prevState.authMode === 'login' ? 'signup' : 'login'
+        }
+    })
+  }
+
   render() {
     return (
       <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
@@ -153,7 +162,9 @@ class AuthScreen extends Component {
                 valid={this.state.controls.password.valid}
                 touched={this.state.controls.password.touched}
               />
-              <DefaultInput
+
+              {this.state.authMode === 'signup' &&
+                <DefaultInput
                 placeholder="Confirm password"
                 placeholderTextColor="#fff"
                 style={[
@@ -169,11 +180,13 @@ class AuthScreen extends Component {
                 }
                 valid={this.state.controls.confirmPassword.valid}
                 touched={this.state.controls.confirmPassword.touched}
-              />
+                />
+              }
+              
             </View>
           </View>
           <View style={styles.buttonsContainer}>
-            <PrimaryButton>Switch to Login</PrimaryButton>
+            <PrimaryButton onPress={this.switchAuthMode}>Switch to Login</PrimaryButton>
             <PrimaryButton
               onPress={this.loginHandler}
               disabled={
