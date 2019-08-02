@@ -15,11 +15,18 @@ class SharePlaceScreen extends Component {
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
   }
   state = {
-    placeName: ""
+    placeName: "",
+    valid: false,
+    minLength: 2,
+    touched: false
   };
 
   changeTextHandler = val => {
-    this.setState({ placeName: val });
+    this.setState({
+      placeName: val,
+      valid: this.state.placeName.length >= this.state.minLength ? true : false,
+      touched: true
+    });
   };
 
   onNavigatorEvent = event => {
@@ -54,6 +61,8 @@ class SharePlaceScreen extends Component {
             <NewPlaceForm
               placeName={this.state.placeName}
               onChangeText={this.changeTextHandler}
+              valid={this.state.valid}
+              touched={this.state.valid}
             />
             <Button title="Add new place" onPress={this.submitHandler} />
           </View>
