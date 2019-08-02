@@ -12,6 +12,8 @@ class NewPlaceForm extends Component {
         value={this.props.placeName}
         onChangeText={this.props.onChangeText}
         underlineColorAndroid="#013f25"
+        autoCapitalize="words"
+        autoCorrect={false}
       />
     );
   }
