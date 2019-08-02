@@ -8,6 +8,7 @@ import HeadingOne from "../components/UI/HeadingOne";
 import AddImage from "../components/AddImage";
 import AddLocation from "../components/AddLocation";
 import NewPlaceForm from "../components/NewPlaceForm";
+import PrimaryButton from "../components/UI/PrimaryButton";
 
 class SharePlaceScreen extends Component {
   constructor(props) {
@@ -64,7 +65,9 @@ class SharePlaceScreen extends Component {
               valid={this.state.valid}
               touched={this.state.valid}
             />
-            <Button title="Add new place" onPress={this.submitHandler} />
+            <PrimaryButton onPress={this.submitHandler} disabled={!this.state.valid}>
+            Add new place
+            </PrimaryButton>
           </View>
         </View>
       </ScrollView>

@@ -40,7 +40,9 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#fff",
     fontSize: 16,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    textTransform: 'uppercase',
+    textAlign: 'center'
   },
   disabled: {
     backgroundColor: '#7e887c',
