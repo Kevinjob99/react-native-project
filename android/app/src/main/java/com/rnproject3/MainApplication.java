@@ -13,6 +13,8 @@ import com.reactnativenavigation.NavigationApplication;
 import java.util.Arrays;
 import java.util.List;
 
+import com.airbnb.android.react.maps.MapsPackage;
+
 // public class MainApplication extends Application implements ReactApplication {
 
 //   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
@@ -59,7 +61,8 @@ public class MainApplication extends NavigationApplication {
 		// Add additional packages you require here
 		// No need to add RnnPackage and MainReactPackage
 		return Arrays.<ReactPackage>asList(
-			new VectorIconsPackage()
+			new VectorIconsPackage(),
+      new MapsPackage()
 		);
 	}
 
