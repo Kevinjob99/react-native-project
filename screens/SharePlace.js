@@ -70,7 +70,7 @@ class SharePlaceScreen extends Component {
                 placeName={this.state.placeName}
                 onChangeText={this.changeTextHandler}
                 valid={this.state.valid}
-                touched={this.state.valid}
+                touched={this.state.touched}
               />
               <PrimaryButton
                 onPress={this.submitHandler}

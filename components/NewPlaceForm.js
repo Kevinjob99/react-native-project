@@ -10,6 +10,8 @@ class NewPlaceForm extends Component {
         style={styles.input}
         placeholder="Add an awesome place"
         value={this.props.placeName}
+        valid={this.props.valid}
+        touched={this.props.touched}
         onChangeText={this.props.onChangeText}
         underlineColorAndroid="#013f25"
         autoCapitalize="words"
