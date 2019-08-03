@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { View, Button, ScrollView, StyleSheet } from "react-native";
+import {
+  View,
+  TouchableWithoutFeedback,
+  ScrollView,
+  StyleSheet,
+  Keyboard
+} from "react-native";
 import { connect } from "react-redux";
 
 import { addPlace } from "../store/actions/actionCreators";
@@ -53,23 +59,28 @@ class SharePlaceScreen extends Component {
   render() {
     return (
       <ScrollView>
-        <View>
-          <HeroImage />
-          <View style={styles.container}>
-            <HeadingOne>Add new place!</HeadingOne>
-            <AddImage />
-            <AddLocation />
-            <NewPlaceForm
-              placeName={this.state.placeName}
-              onChangeText={this.changeTextHandler}
-              valid={this.state.valid}
-              touched={this.state.valid}
-            />
-            <PrimaryButton onPress={this.submitHandler} disabled={!this.state.valid}>
-            Add new place
-            </PrimaryButton>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View>
+            <HeroImage />
+            <View style={styles.container}>
+              <HeadingOne>Add new place!</HeadingOne>
+              <AddImage />
+              <AddLocation />
+              <NewPlaceForm
+                placeName={this.state.placeName}
+                onChangeText={this.changeTextHandler}
+                valid={this.state.valid}
+                touched={this.state.valid}
+              />
+              <PrimaryButton
+                onPress={this.submitHandler}
+                disabled={!this.state.valid}
+              >
+                Add new place
+              </PrimaryButton>
+            </View>
           </View>
-        </View>
+        </TouchableWithoutFeedback>
       </ScrollView>
     );
   }
