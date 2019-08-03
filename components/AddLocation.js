@@ -1,13 +1,25 @@
 import React, { Component } from "react";
-import { Text, View, Button, StyleSheet } from "react-native";
+import { Text, View, Button, StyleSheet, Dimensions } from "react-native";
+import MapView from "react-native-maps";
 
 class AddLocation extends Component {
+  state = {
+    initialRegion: {
+      latitude: 53.1256049,
+      longitude: 17.8981004,
+      latitudeDelta: 0.1,
+      longitudeDelta:
+        (Dimensions.get("window").width / Dimensions.get("window").height) *
+        0.1
+    }
+  };
   render() {
     return (
       <React.Fragment>
-        <View style={styles.placeholder}>
-          <Text>Map placeholder</Text>
-        </View>
+        <MapView
+          style={styles.map}
+          initialRegion={this.state.initialRegion}
+        />
         <Button title="Locate me" />
       </React.Fragment>
     );
@@ -15,14 +27,9 @@ class AddLocation extends Component {
 }
 
 const styles = StyleSheet.create({
-  placeholder: {
+  map: {
     width: "100%",
-    height: 150,
-    borderWidth: 1,
-    borderColor: "#000",
-    backgroundColor: "#f2f2f2",
-    justifyContent: "center",
-    alignItems: "center",
+    height: 200,
     marginTop: 16,
     marginBottom: 16
   }
