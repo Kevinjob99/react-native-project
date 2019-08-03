@@ -25,7 +25,7 @@ class SharePlaceScreen extends Component {
   state = {
     placeName: "",
     valid: false,
-    minLength: 2,
+    minLength: 1,
     touched: false
   };
 
@@ -51,9 +51,6 @@ class SharePlaceScreen extends Component {
   };
 
   submitHandler = () => {
-    if (this.state.placeName.trim() === "") {
-      return;
-    }
     this.props.onAddPlace(this.state.placeName);
   };
 
