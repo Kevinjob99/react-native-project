@@ -4,7 +4,8 @@ import {
   TouchableWithoutFeedback,
   ScrollView,
   StyleSheet,
-  Keyboard
+  Keyboard,
+  KeyboardAvoidingView
 } from "react-native";
 import { connect } from "react-redux";
 
@@ -58,30 +59,32 @@ class SharePlaceScreen extends Component {
 
   render() {
     return (
-      <ScrollView>
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View>
-            <HeroImage />
-            <View style={styles.container}>
-              <HeadingOne>Add new place!</HeadingOne>
-              <AddImage />
-              <AddLocation />
-              <NewPlaceForm
-                placeName={this.state.placeName}
-                onChangeText={this.changeTextHandler}
-                valid={this.state.valid}
-                touched={this.state.touched}
-              />
-              <PrimaryButton
-                onPress={this.submitHandler}
-                disabled={!this.state.valid}
-              >
-                Add new place
-              </PrimaryButton>
+      <KeyboardAvoidingView behavior='position' style={{flex: 1}}>
+        <ScrollView>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View>
+              <HeroImage />
+              <View style={styles.container}>
+                <HeadingOne>Add new place!</HeadingOne>
+                <AddImage />
+                <AddLocation />
+                <NewPlaceForm
+                  placeName={this.state.placeName}
+                  onChangeText={this.changeTextHandler}
+                  valid={this.state.valid}
+                  touched={this.state.touched}
+                />
+                <PrimaryButton
+                  onPress={this.submitHandler}
+                  disabled={!this.state.valid}
+                >
+                  Add new place
+                </PrimaryButton>
+              </View>
             </View>
-          </View>
-        </TouchableWithoutFeedback>
-      </ScrollView>
+          </TouchableWithoutFeedback>
+        </ScrollView>
+      </KeyboardAvoidingView>
     );
   }
 }
