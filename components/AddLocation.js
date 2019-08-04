@@ -36,6 +36,23 @@ class AddLocation extends Component {
     })
   }
 
+  locateHandler = () => {
+    navigator.geolocation.getCurrentPosition(pos => {
+      const eventCoords = {
+        nativeEvent: {
+          coordinate: {
+            latitude: pos.coords.latitude,
+            longitude: pos.coords.latitude
+          }
+        }
+      };
+      this.pickLocationHandler(eventCoords);
+    },
+    error => {
+      console.log(error);
+    })
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -50,7 +67,7 @@ class AddLocation extends Component {
             coordinate={this.state.focusedRegion} />
           }
         </MapView>
-        <Button title="Locate me" />
+        <Button title="Locate me" onPress={this.locateHandler} />
       </React.Fragment>
     );
   }
