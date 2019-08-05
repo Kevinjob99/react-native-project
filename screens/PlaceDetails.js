@@ -65,7 +65,10 @@ class PlaceDetailsScreen extends Component {
           <MapView
             initialRegion={selectedLocation}
             style={styles.map}
-          />
+            ref={map => this.map = map}
+          >
+            <Marker coordinate={selectedPlace.location} />
+          </MapView>
           <View style={styles.modalButtonsContainer}>
             <TouchableOpacity onPress={this.deletePlaceHandler}>
               <View style={styles.deleteButton}>
