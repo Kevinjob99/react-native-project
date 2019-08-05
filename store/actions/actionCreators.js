@@ -1,10 +1,11 @@
 // import { ADD_PLACE, DELETE_PLACE, SELECT_PLACE, DESELECT_PLACE } from './actionsTypes';
 import { ADD_PLACE, DELETE_PLACE, UPDATE_MODE, TRY_AUTH } from "./actionsTypes";
 
-export const addPlace = name => {
+export const addPlace = (name, location) => {
   return {
     type: ADD_PLACE,
-    name: name
+    name: name,
+    location: location
   };
 };
 
