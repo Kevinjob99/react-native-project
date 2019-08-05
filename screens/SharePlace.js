@@ -26,7 +26,11 @@ class SharePlaceScreen extends Component {
     placeName: "",
     valid: false,
     minLength: 1,
-    touched: false
+    touched: false,
+    location: {
+      value: null,
+      valid: false
+    }
   };
 
   changeTextHandler = val => {
@@ -54,6 +58,18 @@ class SharePlaceScreen extends Component {
     this.props.onAddPlace(this.state.placeName);
   };
 
+  locationPickedHandler = (location) => {
+    this.setState(prevState => {
+      return {
+        ...prevState.location,
+        location: {
+          value: location,
+          valid: true
+        }
+      }
+    })
+  }
+
   render() {
     return (
       <KeyboardAvoidingView behavior='position' style={{flex: 1}}>
@@ -64,7 +80,9 @@ class SharePlaceScreen extends Component {
               <View style={styles.container}>
                 <HeadingOne>Add new place!</HeadingOne>
                 <AddImage />
-                <AddLocation />
+                <AddLocation
+                  locationPicked={this.locationPickedHandler}
+                />
                 <NewPlaceForm
                   placeName={this.state.placeName}
                   onChangeText={this.changeTextHandler}
