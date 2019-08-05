@@ -8,6 +8,7 @@ import {
   Dimensions
 } from "react-native";
 import { connect } from "react-redux";
+import MapView, { Marker } from 'react-native-maps';
 
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { deletePlace } from "../store/actions/actionCreators";
@@ -40,8 +41,16 @@ class PlaceDetailsScreen extends Component {
   };
   render() {
     const { selectedPlace } = this.props;
+    const selectedLocation = {
+      latitude: selectedPlace.location.latitude,
+      longitude: selectedPlace.location.longitude,
+      latitudeDelta: 0.1,
+      longitudeDelta: (Dimensions.get("window").width / Dimensions.get("window").height) *
+      0.1
+    }
 
     return (
+
       <View
         style={[
           styles.modalContainer,
@@ -53,6 +62,10 @@ class PlaceDetailsScreen extends Component {
         <Image source={selectedPlace.image} style={[styles.modalImage, this.state.viewMode === 'portrait' ? styles.portraitModalImage : styles.landscapeModalImage]} />
         <View style={this.state.viewMode === 'portrait' ? styles.portraitDetailsContainer : styles.landscapeDetailsContainer}>
           <Text style={styles.modalTitle}>{selectedPlace.name}</Text>
+          <MapView
+            initialRegion={selectedLocation}
+            style={styles.map}
+          />
           <View style={styles.modalButtonsContainer}>
             <TouchableOpacity onPress={this.deletePlaceHandler}>
               <View style={styles.deleteButton}>
@@ -91,6 +104,10 @@ const styles = StyleSheet.create({
   },
   landscapeDetailsContainer: {
     width: '50%'
+  },
+  map: {
+    width: '100%',
+    height: 150
   },
   modalTitle: {
     textAlign: "center",
