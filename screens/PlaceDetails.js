@@ -110,7 +110,8 @@ const styles = StyleSheet.create({
   },
   map: {
     width: '100%',
-    height: 150
+    height: 250,
+    marginVertical: 10
   },
   modalTitle: {
     textAlign: "center",
