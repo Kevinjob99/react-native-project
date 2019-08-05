@@ -5,10 +5,11 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  ScrollView
 } from "react-native";
 import { connect } from "react-redux";
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker } from "react-native-maps";
 
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { deletePlace } from "../store/actions/actionCreators";
@@ -45,40 +46,55 @@ class PlaceDetailsScreen extends Component {
       latitude: selectedPlace.location.latitude,
       longitude: selectedPlace.location.longitude,
       latitudeDelta: 0.1,
-      longitudeDelta: (Dimensions.get("window").width / Dimensions.get("window").height) *
-      0.1
-    }
+      longitudeDelta:
+        (Dimensions.get("window").width / Dimensions.get("window").height) * 0.1
+    };
 
     return (
-
-      <View
-        style={[
-          styles.modalContainer,
-          this.state.viewMode === "portrait"
-            ? styles.portraitModalContainer
-            : styles.landscapeModalContainer
-        ]}
-      >
-        <Image source={selectedPlace.image} style={[styles.modalImage, this.state.viewMode === 'portrait' ? styles.portraitModalImage : styles.landscapeModalImage]} />
-        <View style={this.state.viewMode === 'portrait' ? styles.portraitDetailsContainer : styles.landscapeDetailsContainer}>
-          <Text style={styles.modalTitle}>{selectedPlace.name}</Text>
-          <MapView
-            initialRegion={selectedLocation}
-            style={styles.map}
-            ref={map => this.map = map}
+      <ScrollView>
+        <View
+          style={[
+            styles.modalContainer,
+            this.state.viewMode === "portrait"
+              ? styles.portraitModalContainer
+              : styles.landscapeModalContainer
+          ]}
+        >
+          <Image
+            source={selectedPlace.image}
+            style={[
+              styles.modalImage,
+              this.state.viewMode === "portrait"
+                ? styles.portraitModalImage
+                : styles.landscapeModalImage
+            ]}
+          />
+          <View
+            style={
+              this.state.viewMode === "portrait"
+                ? styles.portraitDetailsContainer
+                : styles.landscapeDetailsContainer
+            }
           >
-            <Marker coordinate={selectedPlace.location} />
-          </MapView>
-          <View style={styles.modalButtonsContainer}>
-            <TouchableOpacity onPress={this.deletePlaceHandler}>
-              <View style={styles.deleteButton}>
-                <Icon name="delete" size={20} color="#fff" />
-                <Text style={styles.deleteButtonText}>Delete</Text>
-              </View>
-            </TouchableOpacity>
+            <Text style={styles.modalTitle}>{selectedPlace.name}</Text>
+            <MapView
+              initialRegion={selectedLocation}
+              style={styles.map}
+              ref={map => (this.map = map)}
+            >
+              <Marker coordinate={selectedPlace.location} />
+            </MapView>
+            <View style={styles.modalButtonsContainer}>
+              <TouchableOpacity onPress={this.deletePlaceHandler}>
+                <View style={styles.deleteButton}>
+                  <Icon name="delete" size={20} color="#fff" />
+                  <Text style={styles.deleteButtonText}>Delete</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -97,19 +113,19 @@ const styles = StyleSheet.create({
     height: 200
   },
   portraitModalImage: {
-    width: '100%'
+    width: "100%"
   },
   landscapeModalImage: {
-    width: '50%'
+    width: "50%"
   },
   portraitDetailsContainer: {
-    width: '100%'
+    width: "100%"
   },
   landscapeDetailsContainer: {
-    width: '50%'
+    width: "50%"
   },
   map: {
-    width: '100%',
+    width: "100%",
     height: 250,
     marginVertical: 10
   },
