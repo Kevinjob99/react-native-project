@@ -23,22 +23,36 @@ class SharePlaceScreen extends Component {
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
   }
   state = {
-    placeName: "",
-    valid: false,
-    minLength: 1,
-    touched: false,
-    location: {
-      value: null,
-      valid: false
+    controls: {
+      placeName: {
+        value: '',
+        valid: false,
+        minLength: 1,
+        touched: false
+      },
+      location: {
+        value: null,
+        valid: false
+      }
     }
   };
 
-  changeTextHandler = val => {
-    this.setState({
-      placeName: val,
-      valid: this.state.placeName.length >= this.state.minLength ? true : false,
-      touched: true
-    });
+  changeTextHandler = (val) => {
+
+    this.setState(prevState => {
+      return {
+        controls: {
+          ...prevState.controls,
+          placeName: {
+            ...prevState.controls.placeName,
+            value: val,
+            valid: this.state.controls.placeName.value.length >= this.state.controls.placeName.minLength ? true : false,
+            touched: true
+          }
+        }
+      }
+    })
+
   };
 
   onNavigatorEvent = event => {
@@ -55,13 +69,13 @@ class SharePlaceScreen extends Component {
   };
 
   submitHandler = () => {
-    this.props.onAddPlace(this.state.placeName);
+    this.props.onAddPlace(this.state.controls.placeName.value, this.state.controls.location.value);
   };
 
   locationPickedHandler = (location) => {
     this.setState(prevState => {
       return {
-        ...prevState.location,
+        ...prevState.controls.location,
         location: {
           value: location,
           valid: true
@@ -84,14 +98,14 @@ class SharePlaceScreen extends Component {
                   locationPicked={this.locationPickedHandler}
                 />
                 <NewPlaceForm
-                  placeName={this.state.placeName}
+                  placeName={this.state.controls.placeName.value}
                   onChangeText={this.changeTextHandler}
-                  valid={this.state.valid}
-                  touched={this.state.touched}
+                  valid={this.state.controls.placeName.valid}
+                  touched={this.state.controls.placeName.touched}
                 />
                 <PrimaryButton
                   onPress={this.submitHandler}
-                  disabled={!this.state.valid}
+                  disabled={!this.state.controls.placeName.valid}
                 >
                   Add new place
                 </PrimaryButton>
@@ -114,7 +128,7 @@ const styles = StyleSheet.create({
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddPlace: name => dispatch(addPlace(name))
+    onAddPlace: (name, location) => dispatch(addPlace(name, location))
   };
 };
 
