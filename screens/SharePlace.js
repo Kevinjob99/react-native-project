@@ -25,7 +25,7 @@ class SharePlaceScreen extends Component {
   state = {
     controls: {
       placeName: {
-        value: '',
+        value: "",
         valid: false,
         minLength: 1,
         touched: false
@@ -37,8 +37,7 @@ class SharePlaceScreen extends Component {
     }
   };
 
-  changeTextHandler = (val) => {
-
+  changeTextHandler = val => {
     this.setState(prevState => {
       return {
         controls: {
@@ -46,13 +45,16 @@ class SharePlaceScreen extends Component {
           placeName: {
             ...prevState.controls.placeName,
             value: val,
-            valid: this.state.controls.placeName.value.length >= this.state.controls.placeName.minLength ? true : false,
+            valid:
+              this.state.controls.placeName.value.length >=
+              this.state.controls.placeName.minLength
+                ? true
+                : false,
             touched: true
           }
         }
-      }
-    })
-
+      };
+    });
   };
 
   onNavigatorEvent = event => {
@@ -69,24 +71,29 @@ class SharePlaceScreen extends Component {
   };
 
   submitHandler = () => {
-    this.props.onAddPlace(this.state.controls.placeName.value, this.state.controls.location.value);
+    this.props.onAddPlace(
+      this.state.controls.placeName.value,
+      this.state.controls.location.value
+    );
   };
 
-  locationPickedHandler = (location) => {
+  locationPickedHandler = location => {
     this.setState(prevState => {
       return {
-        ...prevState.controls.location,
-        location: {
-          value: location,
-          valid: true
+        controls: {
+          ...prevState.controls,
+          location: {
+            value: location,
+            valid: true
+          }
         }
-      }
-    })
-  }
+      };
+    });
+  };
 
   render() {
     return (
-      <KeyboardAvoidingView behavior='position' style={{flex: 1}}>
+      <KeyboardAvoidingView behavior="position" style={{ flex: 1 }}>
         <ScrollView>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View>
@@ -94,9 +101,7 @@ class SharePlaceScreen extends Component {
               <View style={styles.container}>
                 <HeadingOne>Add new place!</HeadingOne>
                 <AddImage />
-                <AddLocation
-                  locationPicked={this.locationPickedHandler}
-                />
+                <AddLocation locationPicked={this.locationPickedHandler} />
                 <NewPlaceForm
                   placeName={this.state.controls.placeName.value}
                   onChangeText={this.changeTextHandler}
@@ -105,7 +110,10 @@ class SharePlaceScreen extends Component {
                 />
                 <PrimaryButton
                   onPress={this.submitHandler}
-                  disabled={!this.state.controls.placeName.valid}
+                  disabled={
+                    !this.state.controls.placeName.valid ||
+                    !this.state.controls.location.valid
+                  }
                 >
                   Add new place
                 </PrimaryButton>
