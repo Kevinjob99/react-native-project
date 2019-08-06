@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, Button, StyleSheet } from "react-native";
+import { Text, View, Button, StyleSheet, Image } from "react-native";
 import ImagePicker from 'react-native-image-picker';
 
 class AddImage extends Component {
@@ -28,7 +28,7 @@ class AddImage extends Component {
     return (
       <React.Fragment>
         <View style={styles.placeholder}>
-          <Text>Image placeholder</Text>
+          <Image source={this.state.pickedImage} style={styles.image} />
         </View>
         <Button title="Select an image" onPress={this.pickImageHandler} />
       </React.Fragment>
@@ -47,6 +47,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 16,
     marginBottom: 16
+  },
+  image: {
+    width: '100%',
+    height: '100%'
   }
 })
 
