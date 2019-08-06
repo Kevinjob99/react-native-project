@@ -131,7 +131,8 @@ class SharePlaceScreen extends Component {
                   onPress={this.submitHandler}
                   disabled={
                     !this.state.controls.placeName.valid ||
-                    !this.state.controls.location.valid
+                    !this.state.controls.location.valid ||
+                    !this.state.controls.image.valid
                   }
                 >
                   Add new place
