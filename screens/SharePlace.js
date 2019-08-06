@@ -33,6 +33,10 @@ class SharePlaceScreen extends Component {
       location: {
         value: null,
         valid: false
+      },
+      image: {
+        value: null,
+        valid: false
       }
     }
   };
@@ -91,6 +95,20 @@ class SharePlaceScreen extends Component {
     });
   };
 
+  imagePickedHandler = image => {
+    this.setState(prevState => {
+      return {
+        controls: {
+          ...prevState.controls,
+          image: {
+            value: image,
+            valid: true
+          }
+        }
+      }
+    })
+  }
+
   render() {
     return (
       <KeyboardAvoidingView behavior="position" style={{ flex: 1 }}>
@@ -100,7 +118,7 @@ class SharePlaceScreen extends Component {
               <HeroImage />
               <View style={styles.container}>
                 <HeadingOne>Add new place!</HeadingOne>
-                <AddImage />
+                <AddImage imagePicked={this.imagePickedHandler} />
                 <AddLocation locationPicked={this.locationPickedHandler} />
                 <NewPlaceForm
                   placeName={this.state.controls.placeName.value}
