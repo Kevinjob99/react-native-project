@@ -20,7 +20,7 @@ class AddImage extends Component {
         this.setState({
           pickedImage: {uri: res.uri}
         })
-        this.props.imagePicked({uri: res.uri})
+        this.props.imagePicked({uri: res.uri, base64: res.data})
       }
     });
   }
