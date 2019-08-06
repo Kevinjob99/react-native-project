@@ -77,7 +77,8 @@ class SharePlaceScreen extends Component {
   submitHandler = () => {
     this.props.onAddPlace(
       this.state.controls.placeName.value,
-      this.state.controls.location.value
+      this.state.controls.location.value,
+      this.state.controls.image.value
     );
   };
 
@@ -154,7 +155,7 @@ const styles = StyleSheet.create({
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddPlace: (name, location) => dispatch(addPlace(name, location))
+    onAddPlace: (name, location, image) => dispatch(addPlace(name, location, image))
   };
 };
 
