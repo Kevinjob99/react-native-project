@@ -2,12 +2,31 @@
 import { ADD_PLACE, DELETE_PLACE, UPDATE_MODE, TRY_AUTH } from "./actionsTypes";
 
 export const addPlace = (name, location, image) => {
-  return {
-    type: ADD_PLACE,
+
+  const placeData = {
     name: name,
-    location: location,
-    image: image
-  };
+    location: location
+  }
+
+  return dispatch => {
+    fetch('https://awesome-places-7495b.firebaseio.com/places.json', {
+      method: 'POST',
+      body: JSON.stringify(placeData)
+    })
+    .catch(err => console.log(err)
+    .then(res => res.json())
+    .then(parsedRes => {
+      console.log(parsedRes)
+    }
+    )
+    )
+  }
+  // return {
+  //   type: ADD_PLACE,
+  //   name: name,
+  //   location: location,
+  //   image: image
+  // };
 };
 
 export const deletePlace = key => {
