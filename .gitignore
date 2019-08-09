@@ -61,3 +61,5 @@ buck-out/
 *.jsbundle
 
 .vscode/*
+
+functions/awesome-places.json
