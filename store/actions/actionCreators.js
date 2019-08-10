@@ -1,5 +1,5 @@
 // import { ADD_PLACE, DELETE_PLACE, SELECT_PLACE, DESELECT_PLACE } from './actionsTypes';
-import { ADD_PLACE, DELETE_PLACE, UPDATE_MODE, TRY_AUTH } from "./actionsTypes";
+import { SET_PLACE, DELETE_PLACE, UPDATE_MODE, TRY_AUTH } from "./actionsTypes";
 import { startLoading, stopLoading } from './uiActions';
 
 export const addPlace = (name, location, image) => {
@@ -60,10 +60,17 @@ export const getPlaces = () => {
     fetch('https://awesome-places-7495b.firebaseio.com/places.json')
     .catch(err => console.log(err))
     .then(res => res.json())
-    .then(res => {
-      console.log(res);
-      dispatch();
+    .then(parsedRes => {
+      console.log(parsedRes);
+      dispatch(setPlaces(places));
     })
+  }
+}
+
+export const setPlaces = places => {
+  return {
+    type: SET_PLACE,
+    places: places
   }
 }
 
