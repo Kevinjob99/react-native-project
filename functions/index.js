@@ -15,7 +15,7 @@ const gcs = require("@google-cloud/storage")(gcconfig);
 //
 exports.storeImage = functions.https.onRequest((request, response) => {
   return cors(request, response, () => {
-    const body = JSON.parse(response.body);
+    const body = JSON.parse(request.body);
 
     fs.writeFileSync("/tmp/uploaded-image.jpg", body.image, "base64", err => {
       console.log(err);
@@ -30,9 +30,11 @@ exports.storeImage = functions.https.onRequest((request, response) => {
       {
         uploadType: "media",
         destination: "/places/" + uuid + ".jpg",
-        metaData: {
-          contentType: "image/jpeg",
-          firebaseStorageDownloadTokens: uuid
+        metadata: {
+          metadata: {
+            contentType: "image/jpeg",
+            firebaseStorageDownloadTokens: uuid
+          }
         }
       },
       (err, file) => {
