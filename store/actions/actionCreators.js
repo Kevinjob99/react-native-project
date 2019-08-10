@@ -1,5 +1,5 @@
 // import { ADD_PLACE, DELETE_PLACE, SELECT_PLACE, DESELECT_PLACE } from './actionsTypes';
-import { SET_PLACE, DELETE_PLACE, UPDATE_MODE, TRY_AUTH } from "./actionsTypes";
+import { SET_PLACES, DELETE_PLACE, UPDATE_MODE, TRY_AUTH } from "./actionsTypes";
 import { startLoading, stopLoading } from './uiActions';
 
 export const addPlace = (name, location, image) => {
@@ -62,7 +62,7 @@ export const getPlaces = () => {
     .then(res => res.json())
     .then(parsedRes => {
       const places = [];
-      for (let key in parsedRes.places) {
+      for (let key in parsedRes) {
         places.push({
           ...parsedRes[key],
           image: {
