@@ -2,25 +2,40 @@
 import { ADD_PLACE, DELETE_PLACE, UPDATE_MODE, TRY_AUTH } from "./actionsTypes";
 
 export const addPlace = (name, location, image) => {
-
-  const placeData = {
-    name: name,
-    location: location
-  }
-
   return dispatch => {
-    fetch('https://awesome-places-7495b.firebaseio.com/places.json', {
-      method: 'POST',
-      body: JSON.stringify(placeData)
-    })
-    .catch(err => console.log(err)
-    .then(res => res.json())
-    .then(parsedRes => {
-      console.log(parsedRes)
-    }
+    fetch(
+      "https://us-central1-awesome-places-7495b.cloudfunctions.net/storeImage",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          image: image.base64
+        })
+      }
     )
-    )
-  }
+      .catch(err => console.log(err))
+      .then(res => res.json())
+      .then(parsedRes => {
+        const placeData = {
+          name: name,
+          location: location,
+          image: parsedRes.imageUrl
+        };
+
+        return fetch(
+          "https://awesome-places-7495b.firebaseio.com/places.json",
+          {
+            method: "POST",
+            body: JSON.stringify(placeData)
+          }
+        )
+        .catch(err => console.log(err))
+        .then(res => res.json())
+        .then(parsedRes => {
+          console.log(parsedRes);
+        })
+      })
+
+  };
   // return {
   //   type: ADD_PLACE,
   //   name: name,
