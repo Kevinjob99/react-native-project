@@ -61,7 +61,13 @@ export const getPlaces = () => {
     .catch(err => console.log(err))
     .then(res => res.json())
     .then(parsedRes => {
-      console.log(parsedRes);
+      const places = [];
+      for (let key in parsedRes.places) {
+        places.push({
+          ...parsedRes[key],
+          key: key
+        })
+        }
       dispatch(setPlaces(places));
     })
   }
