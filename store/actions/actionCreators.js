@@ -55,6 +55,18 @@ export const addPlace = (name, location, image) => {
   // };
 };
 
+export const getPlaces = () => {
+  return dispatch => {
+    fetch('https://awesome-places-7495b.firebaseio.com/places.json')
+    .catch(err => console.log(err))
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+      dispatch();
+    })
+  }
+}
+
 export const deletePlace = key => {
   return {
     type: DELETE_PLACE,
