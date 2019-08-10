@@ -6,7 +6,7 @@ import PlaceholderImage from "../../assets/placeholder-image.jpg";
 //   SELECT_PLACE,
 //   DESELECT_PLACE
 // } from "../actions/actionsTypes";
-import { ADD_PLACE, DELETE_PLACE, UPDATE_MODE} from "../actions/actionsTypes";
+import { SET_PLACE, DELETE_PLACE, UPDATE_MODE} from "../actions/actionsTypes";
 
 const initialState = {
   places: [],
@@ -16,18 +16,23 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_PLACE:
+    case SET_PLACES:
       return {
         ...state,
-        places: state.places.concat({
-          key: Math.random().toString(),
-          name: action.name,
-          image: {
-            uri: action.image.uri
-          },
-          location: action.location
-        })
-      };
+        places: action.places
+      }
+    // case ADD_PLACE:
+    //   return {
+    //     ...state,
+    //     places: state.places.concat({
+    //       key: Math.random().toString(),
+    //       name: action.name,
+    //       image: {
+    //         uri: action.image.uri
+    //       },
+    //       location: action.location
+    //     })
+    //   };
 
     case DELETE_PLACE:
       return {
