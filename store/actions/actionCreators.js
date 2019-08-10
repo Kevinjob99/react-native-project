@@ -16,6 +16,7 @@ export const addPlace = (name, location, image) => {
     )
       .catch(err => {
         console.log(err)
+        alert('Something went wrong. Please try again :(');
         dispatch(stopLoading());
       })
       .then(res => res.json())
@@ -35,6 +36,7 @@ export const addPlace = (name, location, image) => {
         )
         .catch(err => {
           console.log(err)
+          alert('Something went wrong. Please try again :(');
           dispatch(stopLoading());
         })
         .then(res => res.json())
