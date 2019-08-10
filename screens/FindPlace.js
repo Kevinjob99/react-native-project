@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 
 import List from "../components/List";
 import HeroImage from "../components/HeroImage";
+import { getPlaces } from '../store/actions/actionCreators';
 
 class FindPlaceScreen extends Component {
   state = {
@@ -21,6 +22,10 @@ class FindPlaceScreen extends Component {
   constructor(props) {
     super(props);
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
+  }
+
+  componentDidMount = () => {
+    this.props.onLoadPlaces();
   }
 
   onNavigatorEvent = event => {
@@ -139,4 +144,10 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(FindPlaceScreen);
+const mapDispatchToProps = dispatch => {
+  return {
+    onLoadPlaces: () => dispatch(getPlaces())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FindPlaceScreen);
