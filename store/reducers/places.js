@@ -6,7 +6,7 @@ import PlaceholderImage from "../../assets/placeholder-image.jpg";
 //   SELECT_PLACE,
 //   DESELECT_PLACE
 // } from "../actions/actionsTypes";
-import { SET_PLACE, DELETE_PLACE, UPDATE_MODE} from "../actions/actionsTypes";
+import { SET_PLACES, DELETE_PLACE, UPDATE_MODE} from "../actions/actionsTypes";
 
 const initialState = {
   places: [],
