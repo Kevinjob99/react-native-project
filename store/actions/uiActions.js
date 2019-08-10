@@ -5,3 +5,9 @@ export const startLoading = () => {
     type: START_LOADING
   }
 }
+
+export const stopLoading = () => {
+  return {
+    type: STOP_LOADING
+  }
+}
