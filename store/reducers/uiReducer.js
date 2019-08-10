@@ -1,4 +1,4 @@
-import { START_LOADING, STOP_LOADING } from './actionsTypes';
+import { START_LOADING, STOP_LOADING } from '../actions/actionsTypes';
 
 const initialState = {
   isLoading: false
