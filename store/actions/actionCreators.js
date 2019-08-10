@@ -1,8 +1,10 @@
 // import { ADD_PLACE, DELETE_PLACE, SELECT_PLACE, DESELECT_PLACE } from './actionsTypes';
 import { ADD_PLACE, DELETE_PLACE, UPDATE_MODE, TRY_AUTH } from "./actionsTypes";
+import { startLoading, stopLoading } from './uiActions';
 
 export const addPlace = (name, location, image) => {
   return dispatch => {
+    dispatch(startLoading());
     fetch(
       "https://us-central1-awesome-places-7495b.cloudfunctions.net/storeImage",
       {
@@ -12,7 +14,10 @@ export const addPlace = (name, location, image) => {
         })
       }
     )
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err)
+        dispatch(stopLoading());
+      })
       .then(res => res.json())
       .then(parsedRes => {
         const placeData = {
@@ -28,10 +33,14 @@ export const addPlace = (name, location, image) => {
             body: JSON.stringify(placeData)
           }
         )
-        .catch(err => console.log(err))
+        .catch(err => {
+          console.log(err)
+          dispatch(stopLoading());
+        })
         .then(res => res.json())
         .then(parsedRes => {
           console.log(parsedRes);
+          dispatch(stopLoading());
         })
       })
 
